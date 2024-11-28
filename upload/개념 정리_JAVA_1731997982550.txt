@@ -1,0 +1,4672 @@
+[[[  개념 모음  ]]]
+
+■ 상수 : 내가 설정해준 고정값
+■ 변수 : 나중에 언제든 바뀔 수 있는 or 입력될 값 
+■ 지역변수 : 메인 내 변수
+■ 멤버변수 : 필드
+■ 매개변수 : 어쩌구() <-괄호 안에 들어갈 변수
+■ scope : 이 변수의 유효한 범위를 일컫는 말.
+■ 토큰 = 띄어쓰기 단위
+
+■ 컴파일 에러 : 문법상 오류
+■ 예외(Exception) : 문법상의 오류가 아닌 '실행중' 에 발생되는 오류상황
+
+
+
+
+■ 롬복 : 알아서 게터세터 등등 만들어주는 확장기능
+■ 어노테이션 annotation : @ 골뱅이 들어가는 것들.. 롬복에서 활용
+
+버그 : 논리 오류가 났을 때
+디버그 : 논리 오류를 찾아 내 고치는 것
+	프로그래밍 실력 = 디버깅력
+	디버깅 안 하면 실력 안 는다.......
+
+코드의 성능
+ - 시간 (Time complexity)
+ - 메모리 용량 (Space complexity)
+
+======================================================================
+//이것은 '주석 comment'.
+
+//Hello 라는 클래스 정의
+public class Hello {
+
+    // main method :
+    public static void main(String[] args) {
+        // 수행할 코드 문장들
+
+        // System.out.println(~~) ~~ 내용을 화면에 출력하고 줄바꿈까지 한다.
+        System.out.println("Hello Java!"); //문장의 끝은 세미콜론(;)으로 마무리!
+
+	System.out.println(10+2); //숫자+숫자
+
+        // IntelliJ 에선
+        // sout 입력하고 Tab 누르면 System.out.println() 자동작성됨.
+        // Settings - Editor - Live Template 에서 목록 확인 가능
+
+        //Java의 문자열은 " ~~ " 쌍따옴표로 감싼다.
+        System.out.println("10+2");//
+
+        System.out.println("10"+"2");//문자열+문자열 => 결과는 문자열 (두개의 문자열 연결)
+
+/*
+    블럭주석
+    (block comment)
+
+ */
+
+/**
+*
+*
+*/
+
+■ 다중주석 /* ctrl + shift + /
+모든 자바 프로그램은 main() 메소드로부터 '시작'한다
+프로그램 실행순서는 '시작' 부터 한 문장(Statement) 씩 실행되는 것이 원칙
+문장의 끝은 반드시 세미콜론 ';' 으로 마무리 해야 한다
+*/
+
+■  // line comment(한줄 주석) Ctrl + /   '//' 우측에 입력한 텍스트는 모두 주석 처리
+// 프로그램 실행과는 상관 없지만,
+// 개발자가 프로그램을 작성할 때 설명을 달아주는 것
+
+        System.out.println(123);  // 숫자
+        System.out.println("123");// 문자열
+
+        System.out.println(3.141592*10*10);
+        System.out.println(10*10/2);
+
+        // "문자열" + 숫자 => 문자열
+        //           ↓ 문자열 변환
+        // "문자열" + "숫자" => 문자열
+
+        System.out.println("결과 : "+10); //"문자열" + 숫자
+        System.out.println("결과 : "+10+20);
+        System.out.println("결과 : "+(10+20));
+
+■ 사칙연산 결과 보여주기
+        System.out.println("10/20 = "+(10/20)); // 정수와 정수 연산 결과는 정수.
+        System.out.println("10/20 = "+(10.0/20));  // 실수와의 연산 결과는 실수.
+                                        //소수점이 있으면 실수, 없으면 정수
+
+■ 이스케이프 문자 (escape character)
+        // " ~ " 문자열 안에서 특수 문자 출력
+
+■ 입문시 기억할만한 이스케이프 문자
+        // \"  : 쌍따옴표
+        // \n  : 줄바꿈
+        // \t  : 탭문자
+        // \\  : 문자열 안에서 역슬래시 출력
+
+        // She says "Hi" <-- 출력하려면?
+        System.out.println("She says \"Hi\""); // "\" 역슬래시를 쓰면 걔까지 합쳐서 하나의 문자로 인식
+                                                // ㄴEscape 문자.
+        System.out.println("123\t456\t7890");
+        System.out.println("12\t34\t56\t78\t90");
+        System.out.println("12345\t67890");
+
+        System.out.println("자바\n풀스택\\");
+
+    }//end main()
+
+
+} // end class.
+■ 닫는 브레이슬릿에 식별용 문장 써 두면 헷갈리지 않아 좋음
+
+
+
+==============================================================================
+
+package com.lec.java.j03_01_variables;
+
+
+■   변수 (Variables) :
+ *      값을 담는 공간.  변수이름(variable name)을 부여해서 관리
+ *
+■  변수는 사용하기 전에 먼저 '선언(declaration)' 해야 한다
+ *   변수 선언 구문:
+ *      변수타입 변수이름;
+ *
+■  변수의 초기화 (initialization)
+ *      변수에 최초로 값(value) 을 대입 (assignment) 하는 것.
+ *      변수(지역변수)를 사용/참조하려면 그전에 반드시 초기화가 되어야 함.
+ *
+ */
+
+        int num1; // int 타입의 변수 num1을 선언. (int 타입, integer. 기본적인 정수타입)
+        int num2;
+
+■ 변수의 초기화
+        num1 = 10; // 변수 num1 의 값으로 정수값 10을 대입(assign)
+        // = : 대입연산자 (assignment operator)
+        num2 = 20;
+★ 선언 안 된 변수는 사용불가. 에러메시지 : cannot resolve
+
+      
+
+       // int num3;
+	// 초기화 되지 않은 변수는 사용불가
+
+        ■  local variable (지역변수)
+        // 지역 변수는 블럭 { ... } 안에서 선언된 변수 = 메서드 안에서 유!
+        // '선언된이후' 부터 '그 블럭의 마지막'까지만 사용 가능한 변수
+        {
+            int a;
+            a = 100;
+	}
+         ★ 블럭이 끝나면 그 안에서 선언된 지역변수는 소멸된다.
+
+
+
+==============================================================================
+
+package com.lec.java.j03_02_variables;
+/*
+■ 식별자 (identifier)
+   변수명 등 사용자가 이름을 지어준 것들
+
+   식별자 수정할때는 refactor-rename(shift+F6) 기능을 활용하자.
+*/
+
+        ■  변수의 선언과 동시에 초기화
+        int num1 = 10;
+        System.out.println("num1="+num1);
+
+
+■  변수명 바꿀때는 refactor-rename 사용하자!   SHIFT+F6
+
+        // 변수명 (식별자) 작명 제약사항.
+        // 알파벳, 숫자, _, $
+        // 숫자로 시작하면 안됨
+        // 띄어쓰기 안됨
+        // 대소문자 구분
+        // 중복 안됨.
+
+■ scope : 이 변수의 유효한 범위를 일컫는 말.
+
+//        int 2024year;
+//        int year 2020;
+
+        int myLittleToy; // 자바에선 일반적으로 변수명은 camel-notation 따름.
+                         // 단어 모양이 낙타 등처럼 생겨서
+        int my_little_toy; //자바에서 가능하긴 하지만 자바에선 잘 안씀.
+        int _my_toy_; // 상기 동일.
+        int $aa; // 변수명에 달러는 쓸 수 있음. 다른 특수문자는 불가!
+
+
+
+
+==============================================================================
+
+package com.lec.java.j03_03_정수타입;
+
+★★★★★★★★★★  필수암기 ★★★★★★★★★★★★★★
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+ * 자바의 기본 자료형(primitive data type) 용량
+ * 정수 타입: byte(1바이트), short(2바이트), int(4바이트), long(8바이트)
+ * 실수 타입: float(4바이트), double(8바이트)
+ * 문자 타입: char(2바이트)
+ * 논리 타입: boolean(1바이트)
+
+바숏인롱 플덥챠불
+ 1 2 4 8   4 8 2 1
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+        //byte : 1byte(=8bit), 256가지 숫자 표현 가능한 용량. -128 ~ +127
+        // short: 2byte(=16bit), 65536가지 표현 가능한 용량. -32768 ~ 32767
+        // int: 4byte 32bit, -2147483648 ~ 2147483647
+        // long: 8byte 64bit, -9223372036854775808 ~ 9223372036854775807
+
+
+//        int num9 = 9876543210;
+//        long num10 = 9876543210;//???? ->리터럴을 int로 인식하려는 과정에서 컴파일러가 인식을 하지 못한 것
+
+        // 리터럴(literal) : 코드에 직접 입력하는 값.
+        // 리터럴도 '타입'이 있다.
+        // 자바는 기본적으로
+        //   정수타입리터럴을 int 타입으로 인식하려 한다.
+        //   실수타입리터럴을 double 타입으로 인식하려 한다.
+
+        long num11 = 9876543210L;
+        // 9876543210 이라는 숫자 리터럴이 int 타입이 아니라 long 타입 리터럴임을 명시하기 위해서
+        // 숫자 뒤에 영문자 L을 붙여줌
+        // 자바에서 정수 타입 변수의 기본은 int임.
+        // 자바는 정수 숫자(리터럴)를 별도 표기가 없으면 int라고 생각.
+
+        long num12 = 12;   // 12 라는 int 값을 Long 타입에 대입.
+        long num13 = 12L;  // 12라는 Long 값을 Long 타입에 대입.
+        int num14 = 12;    // 12라는 int 값을 int 타입에 대입.
+        int num15 = 12L;   // 12라는 8byte 짜리를 4byte 짜리로 대입하려니 에러!
+                           // Long 타입 리터럴을 int 에 대입하려 하면 에러.
+
+        byte num15 = Byte.MAX_VALUE; //127
+        byte num16 = (byte)(num15 + 1); // 127+1
+ 
+
+        // 값의 경계선에선?
+        // overflow!  underflow! 발생 (정수타입에서만 해당 건 발생)
+
+        // 진법에 따른 정수 리터럴 표기
+        int number1 = 11;   // 10진수
+        int number2 = 0xB;  // 16진법. 0x 로 시작
+        int number3 = 013;  // 8진법, 0 으로 시작
+        int number4 = 0b1011;   // 2진법, 0b 로 시작.
+
+
+==============================================================================
+package com.lec.java.j03_04_실수타입;
+
+        ■  실수형 자료 타입: float(4바이트), double(8바이트)
+        ■  정수형 자료 타입의 기본형은 int
+        ■  실수형 자료 타입의 기본형은 double
+
+        double number1 = 3.141592;
+//        float number2 = 3.14; // 실수리터럴이라 더블로 인식하려고 했음. 그래서 에러
+        // 별도의 표기가 없는 경우 소수점이 있는 리터럴은 double로 인식
+        // 3.14는 double형. 이것을 작은 자료 타입인 float에 저장할 수 없다.
+
+        float number3 = 3.14f;  //<- float 리터럴
+
+        ■  실수 타입의 최소, 최대값
+//        float: 1.4E-45 ~ 3.4028235E38
+//           1.4 x 10의 -45승 / 3.4028235 x 10의 38승
+//        double: 4.9E-324 ~ 1.7976931348623157E308
+//           4.9 x 10의 -324승 / 1.7976931348623157 x 10의 308승
+
+        ■ 소수점 이하의 정밀도가 다르다!
+        float number4 = 1.23456789f;
+        double number5 = 1.23456789;
+        System.out.println("number4 = " + number4);
+        System.out.println("number5 = " + number5);
+        // float과 double은 저장할 수 있는 값의 크기만이 아니라
+        // 소수점 이하 정밀도(precision)에서도 차이가 있다.
+
+
+        System.out.println(0.1+0.2); // 실수의 연산결과는 오차가 발생할 수 있다!
+
+
+==============================================================================
+
+package com.lec.java.j03_05_char_bool_String;
+
+
+        ■  char: 문자 "하나"를 저장하기 위한 자료 타입(2바이트)
+        ■  char 는 문자의 코드값(정수)가 담긴다 (2byte)
+
+        char ch1 = 'A';
+        char ch2 = "A";
+        // 문자열(String)은 큰따옴표("")로 묶어 줌.   (String literal)
+        // 문자 하나(char)는 작은따옴표('')로 묶어 줌.   (char literal)
+
+
+        char ch4 = 0xAE01; //16진법. 2바이트짜리. '글' 코드값+1 한 것
+
+
+        ■  println() 은 char 타입을 문자로 출력한다
+         	 그러나 다른 정수형으로 변환되면 해당 코드값을 정수로 출력
+      
+        // 1. "bible"
+        // 2. "cable"
+        // 3. "able"
+        // 오름차순 정렬하면?
+        // 3 - 1 - 2
+
+        // 1. "aaAA"
+        // 2. "AaAa"
+        // 3. "aAaA"
+        // 4. "AAaa"
+        // 4 - 2 - 3 - 1
+
+        char ch8 = 'A';
+        char ch9 = 'a';
+        System.out.println("'A' : " + (int)ch8); //65
+        System.out.println("'a' : " + (int)ch9); //97
+
+
+        ■  boolean (논리형) : 참(true), 거짓(false)
+        boolean b1 = true;
+        boolean b2 = false;
+        System.out.println("b1 : " + b1);
+        System.out.println("b2 : " + b2);
+
+        System.out.println(10 < 20);
+
+        ■  String 타입
+        ★  String은 primitive 타입이 아니다!
+        String name = "Hong";
+        String nick = "Thunder";
+        System.out.println("이름은 : " + name + "\n별명은 : " + nick);
+
+        // ---------------------------------------------
+        // """ : TextBlock : Java15 이상 
+        //   - TextBlock 안에서는 굳이 " 을 escaping 하지 않아도 된다.
+        System.out.println("\nTextBlock (Java15이상)");
+
+
+
+
+/* 만약 아래 내용을 String 으로 만드려면?
+<html>
+
+
+   <body>
+      <span>example text</span>
+   </body>
+</html>
+*/
+
+
+        String txt1 = "<html>\n" +
+                "\n" +
+                "\n" +
+                "   <body>\n" +
+                "      <span>example text</span>\n" +
+                "   </body>\n" +
+                "</html>";
+
+        System.out.println(txt1);
+
+
+        ■  기존의 String 이라면 이와 같이 ", \n, \t 등을 덕지덕지 붙여야 한다.
+
+        String txt2 = """
+                Example text""";
+        System.out.println(txt2);
+
+
+        // 자바는 text block 안의 최소 indent 를 계산하여 String 생성
+        String txt3 = """
+                <html>
+                
+                
+                   <body>
+                      <span>example text</span>
+                   </body>
+                </html>""";
+        System.out.println(txt3);
+
+        ■  TextBlock 안에서는 굳이 " 을 escaping 하지 않아도 된다.
+        ★  유일하게 escaping 해야 하는 것은 \""" , \\뿐
+        System.out.println("""
+                "fun" with
+                whitespace
+                and other escapes \"""
+                """);
+
+
+
+
+
+==============================================================================
+
+[ [  서식  ] ] 
+
+
+package com.lec.java.j03_06_formatted;
+
+
+■ ■ ■ ■ ■ ■  서식화된 문자열 (formatted string)   ■ ■ ■ ■ ■ ■ 
+ *  ● 화면에 출력할때는 -> printf()
+ *    printf("서식문자열", 값1, 값2....)
+ *
+ *  ● 문자열(String)으로 만들때는 -> String.format()
+ *    String.format("서식문자열", 값1, 값2....)
+ *
+ *  ● format specifier (서식 지정자)
+ *      %d  :  십진수 정수로 출력
+ *      %f  :  실수로 출력
+ *      %s  :  문자열 출력
+ *      %c  :  '문자하나' 출력
+ *      %x  :  16진수 정수로 출력
+ *      %%  :  % 출력
+ */
+
+
+        ■  printf : print with format
+             ->   printf("서식문자열", 값1, 값2....)
+        ■  서식문자열 안에 %로 시작하는 서식문자들..
+        System.out.printf("원주율 %f\n", pi); //%f 자리에 넣을 값을 <, pi> 처럼 뒤에 지정해줘야함
+        System.out.printf("원주율 %f\n", pi); //%f : 기본 실수 출력 (소숫점 6자리까지)
+        System.out.printf("원주율 %.2f\n", pi); //%.nf : 실수 출력(소숫점 n자리까지)
+
+
+
+■  출력폭 지정, 좌우 정렬
+        System.out.printf("|%d|%d|%d|\n", 100, 200, 300);
+        System.out.printf("|%5d|%5d|%5d|\n", 100, 200, 300); //5칸에 맞춰 우측정렬)
+        System.out.printf("|%-5d|%-5d|%-5d|\n", 100, 200, 300);//5칸 좌측정렬
+
+        System.out.printf("|%6.1f|\n", height); // 총 6칸, 소수점 이하 1자리 출력
+
+        // format 문자열을 따로 설정해서 사용 가능
+        String fmt = "주소 : %s, 우편번호[%05d]\n";
+                                // 5칸으로 채우되 비어있는 칸은 0으로 채워라
+
+
+■  String.format()
+	// 기본적으로 printf() 와 사용법은 동일함
+	// 단, 화면에 출력하는게 아니라, 결과를 문자열(String) 으로 만들어서 리턴
+
+	       String.format("합격률은 %.1f%% 입니다", 54.2345); //프린트가 아니라 콘솔에 안 나옴
+String result = String.format("합격률은 %.1f%% 입니다", 54.2345); //앞에 String result를 붙여주어야 나온다
+        System.out.println(result);
+
+■  Text Block으로 포맷팅 가능 (Java15 이상)
+        String textblock = """
+                {
+                    "title" : %s,
+                    "author" : %s,
+                    "id" : %d
+                }
+                """.formatted("자바", "뽀로로", 23); //.formatted 넣고 괄호에 값 넣어줘야 나옴
+        System.out.println(textblock);
+
+
+
+==============================================================================
+
+■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■   형(타입) 변환   ■ ■ ■ ■ ■ ■ ■ 
+
+package com.lec.java.j03_07_casting;
+
+
+
+/*
+■  암묵적 형변환(Implicit casting): 자바 언어가 자동으로 해주는 형변환
+*
+*     primitive type 에서 implicit casting 방향
+*
+*     byte → short → int → long → float → double 
+*                	   ↑    ↗       ↗        ↗
+*                	  char (int, long, float, double 로 변환 가능)
+			하지만 숏, 바이트로는 변환 불가!
+
+*
+■  명시적 형변환(Explicit casting): 프로그래머가 직접 타입을 변환하는 것
+*     
+*      (변환하고자 하는 타입명)변수/값
+
+
+
+
+byte num1 = 123; // 대입연산에서 발생하는 자동형변환.
+
+ short s1 = 123; //2byte
+        int n1 = s1; // int <- short
+        double d1 = n1; // double <- int
+
+        char ch1 = 'A';//2byte
+//        s1 = ch1
+        n1 = ch1; // int <- char 됨
+
+        //명시적 형변환(수동 형변환)
+        byte num5 = (byte)513;
+        System.out.println("num5 = "+num5); // 주의! 자료손실 발생!
+
+        byte num6 = 10;
+        int n = 10;
+//        num6 = n; // byte <- int변수 는 자동형변환 안 됨! 리터럴만 자동변환 가능
+
+
+double avg1 = (99 + 88 + 78) / 3; //소수점 자리 자동으로 날려버림;;;
+// 금융사에서 이런 실수 하면 안 됨;;;
+
+double avg2 = (double)(99 + 88 + 78) / 3; //소수점 안 날리도록 명시 하기!!!!!!
+
+
+===========================================================================
+
+
+■ ■ ■ ■ ■  ■ ■ ■ ■      상수  Final       ■ ■ ■ ■ ■ ■ ■ ■ ■ 
+
+package com.lec.java.j03_08_final;
+
+/*
+■  상수 : final
+* 변수 선언 앞에 final 키워드를 사용하면
+* '상수 (constant)' 가 되어.
+* 한번 값을 대입하면 변경할수 없게 된다.
+*
+★ 관례적으로 상수값을 담는 상수명은 대문자로 작성
+*/
+
+public class FInalMain {
+    public static void main(String[] args) {
+        final int MYAGE = 35;
+//        MYAGE = 21; //
+
+        final double PI;
+        PI = 3.141592;
+//        PI = 3.141592;
+//        Math.PI
+
+
+
+
+===========================================================================
+
+■ ■ ■ ■ ■ ■   지역변수  Local-Variable   ■ ■ ■ ■ ■ ■ 
+
+package com.lec.java.j03_09_var;
+
+
+■   Local-Variable Type Inference  (Java10 이상)
+  	지역변수 타입 추론 : var 키워드 로 변수 선언
+  	컴파일러가 '타입'을 추론함
+
+ 	 https://openjdk.org/jeps/286
+
+   ■  제약사항 ■ 
+       1. 지역변수에만 사용!
+       2. 반드시 초기화 필요.
+       3. null 초기화 불가
+       4. 배열에는 사용 불가
+       5. lambda  에 사용 가능 (Java11 부터)
+
+
+
+        var str1 = "Hello World";
+        System.out.println(str1);
+
+        var num1 = 100; //  int타입으로 100이 선언됨
+        var num2 = 3.14; // double(리터럴)
+        var num3 = 100.45f;// float
+        var num4 = 12345L; // Long
+        var num5 = (short)100;// short
+
+
+
+===========================================================================
+
+package com.lec.java.j04_01_nextXXX메소드;
+
+/*
+ 표준입력(Standard Input): 키보드로부터 입력
+■  Scanner 객체 사용
+*
+*/
+
+■ Scanner sc = new Scanner(System.in); //Scanner 객체 생성 및 초기화.
+
+       ■ Scanner 를 통해 '입력' 작업 수행
+
+       ■ sc.close();
+        // Scanner 객체를 사용한 뒤에는 반드시 close() 를 해주어야 한다
+        // close() <--사용한 시스템 자원(키보드, hw, 파일, 네트워크, DB 등...) 을 시스템에 반납
+        // 시스템에서 스캐너란 걸 빌려왔으니까 반납도 해줘야겠죵?
+
+	int num1 = sc.nextInt();    // 키보드(유저)로부터 정수 한 개를 입력 받아서 리턴
+
+
+      // 만약 nextInt() 에서 문자를 입력하면 InputMismatchException 예외 발생
+     
+■ ■ ■  각 primitive 타입에 대해 nextXXX() 메소드 제공 ■ ■ ■ 
+//     sc.nextByte();
+//     sc.nextShort();
+//     sc.nextLong();
+//     sc.nextFloat();
+//     sc.nextDouble();
+//     sc.nextBoolean();
+
+
+
+
+===========================================================================
+
+
+package com.lec.java.j04_02_String_char입력;
+
+■  문자열 (String), char 입력
+        Scanner sc = new Scanner(System.in);
+
+■  Line 단위 String 입력
+        String name = sc.nextLine();
+        // ENTER 를 입력할때까지의 모든 문자들이 문자열(String)로 리턴
+
+
+        ★ char 입력
+     ★★★ nextChar() <- 이런거 없음! ★★★
+
+        System.out.print("성별을 입력하세요 M/F : ");
+        char gender = sc.next().charAt(0); // 첫번째 글자만 캐릭터로 가져와라
+        // next() 메소드로 토큰단위 String 읽은 뒤에  첫문자만 가져오기
+
+        System.out.printf("이름은 : %s 별명은 : %s 성별 : %c\n", name, nick, gender);
+
+★★★ 버퍼 이해하기!!!! ★★★
+        ★ next() 및 nextXXX() "공백 단위(토큰 단위)"로 문자열을 읽기(공백은 제외하고 문자만 가져감)
+        ★ nextLine()는 Enter 단위로 문자열 읽기(공백도 다 포함해 가져가버림)
+
+        System.out.print("나이를 입력하세요 : ");
+        int age = sc.nextInt();
+
+        sc.nextLine();
+        ★ 숫자 입력받은 뒤(토큰 단위 입력받은 뒤) nextLine() 수행 시에는 반드시 "버퍼의 줄바꿈"을 비워주자!
+
+
+        System.out.print("주소를 입력하세요 : ");
+        String addr = sc.nextLine();
+
+        System.out.println("나이 : " + age + " 주소 : " + addr );
+
+
+
+===========================================================================
+
+■■■■■■■■■■■■   sc.next  ■■■■■■■■■■■■■
+
+package com.lec.java.j04_03_nextLine_next;
+
+ // > aaa bbb ccc <-입력
+	■ sc.nextLine(); // 엔터 전까지 그 줄의 문자와 공백을 전부 수용
+	■ sc.next(); // 첫 공백 전까지만 수용
+■ next()
+        // 다음 단어(token)을 꺼내와서 String 으로 리턴.
+
+■ 토큰 = 띄어쓰기 단위
+
+// 숫자 타입도 여러개를 '한 줄'에 받을 수 있다.
+        // >100 3.14 300
+        System.out.print("숫자 3개를 입력하세요 > ");
+        int i1 = sc.nextInt();
+        double d1 = sc.nextDouble();
+        short s1 = sc.nextShort();
+        System.out.printf("i1, d1, s1 : %d %f %d\n", i1, d1, s1);
+//        print라 공백 아무리 많이 쳐도 다 삭제하고 1개씩만 띄워서 보여줌
+
+
+
+
+===========================================================================
+
+■■■■■■■■■■■■   문자열 String ■■■■■■■■■■■■■
+
+
+package com.lec.java.j04_04_문자열to숫자변환;
+
+
+■ 일반적으로 프로그램에서 숫자입력하는 것이 처음에는 '문자열(String)' 형태다
+//  ex) 웹, 모바일앱..
+//
+// 이를 숫자 타입으로 변환해야 산술 연산등이 가능해진다
+//
+// Integer.parseInt(문자열)  -->  int 로 변환
+// Double.parseDouble(문자열)  --> double 로 변환
+
+
+// Byte.parseByte(문자열)
+// Short.parseShort(문자열)
+// Long.parseLong(문자열)
+// Float.parseFloat(문자열)
+// Boolean.parseBoolean(문자열)
+
+
+// 문자열이 해당 타입으로 변환할수 없는 문자열이면 NumberFormatException 예외 발생 (에러)
+
+     // 정수 3개를 문자열로 입력 받고 합을 구하기
+        System.out.print("숫자 3개 (int, int, int)를 입력받으세요 >");
+        String in1 = sc.next();
+        String in2 = sc.next();
+        String in3 = sc.next();
+
+        System.out.println(in1+in2+in3);
+
+        int i1 = Integer.parseInt(in1);// String -> int 로 변환.
+        int i2 = Integer.parseInt(in2);
+        int i3 = Integer.parseInt(in3);
+
+        System.out.println(i1+i2+i3);
+
+
+        sc.close();
+        System.out.println("프로그램 종료");
+
+
+===========================================================================
+
+[[  연산자 Operator  ]]
+
+package com.lec.java.j05_01_대입산술연산자;
+
+/*
+ * 연산자 관련 일반사항
+ * 
+ * 연산 Operation
+ * 연산자  Operator
+ * 피연산자 Operand
+ * 
+ * ■ 피연산자의 개수에 따라
+ * 이항연산자(binary operator) : 피연산자가 2개인 연산자 
+ * 단항연산자(unary operator) : 피연산자가 1개인 연산자
+ * 삼항연산자(ternary operator) : 피연산자가 3개인 연산자
+ * 
+ * ■ 연산자는 연산을 수행하기 전에 피연산자의 타입을 일치시키려 한다.
+ * 	3.14 + 4 => 3.14 + 4.0 으로 변경. 더블타입으로.
+ * 	"a" + 10 => "a" + "10" = "a10"
+ * 
+ * ■ 피연산자의 타입에 따라 수행하는 연산이 달라지는 연산자들도 있다  (ex: +  )
+ * 
+ * ■ 모든 연산은 연산의 결과값을 리턴한다 (어떠한 '값'인지?, 어떤 '타입'인지? 주목)
+ * 
+ * ■ 관례적으로 이항연산자는 피연산자와 연산자 간에 한칸씩(space) 띄어주는게 좋다
+ *   단항연산자는 피연산자와 연산자를 붙여주는게 일반.
+ */
+
+/*
+	대입 연산자 assignment operator : =
+ 		등호(=) 오른쪽의 값을 왼쪽에 대입(저장)
+ 		
+ 	산술 연산자 arithmetic operator : +, -, *, /, % 
+ */
+
+		System.out.println("\n====================");
+		System.out.println("[1] 대입 연산자 : = (assignment operator)");
+		// 등호(=) 오른쪽의 값을 왼쪽에 대입(저장)
+		int num = 123;
+
+		// 대입연산자도 연산자다! 따라서
+		// 연산의 결과값이 있다.  대입된 값을 결과값으로 리턴함
+		int num5;
+		int num6;
+		System.out.println("num5 : " + (num5=100));
+
+		num6 = num5 = 300;
+		System.out.println("num5 : " + num5);
+		System.out.println("num6 : " + num6);
+
+		
+		System.out.println("\n====================");
+		System.out.println("[2] 산술 연산자: +, -, *, /, % (arithmetic operator)");
+		
+		
+		// 나눗셈 연산자(/)가 실수에 사용됐을 경우에는
+		// 계산 결과를 실수로 돌려 줌.
+		// 실수 / 정수, 정수 / 실수, 실수 /실수 경우에는 결과가 항상 실수형이 됨
+
+		int num1 = 7, num2 = 3;
+		int result;
+		
+		// 나머지 연산자(%) 나머지값 구하기.
+		// 정수 % 정수 = 정수로 값을 돌려 줌.
+		// 실수 % 정수, 정수 % 실수, 실수 % 실수 = 몫을 제외한 실수형 나머지를 돌려줌.
+		 result  = num1 % num2;
+		 System.out.println(result);
+
+		 System.out.println(12.1%3.0); // 12.1 = 3.0x4.0 + 0.1
+		
+		
+		// 두 변수 값 바꾸는 방법
+		System.out.println();
+		int num3 = 100;
+		int num4 = 200;
+		int temp; // 임시변수
+
+		System.out.println("바꾸기전 num3=" + num3 + " num4=" + num4);
+		temp = num3;
+		num3 = num4;
+		num4 = temp;
+		System.out.println("바꾼후 num3=" + num3 + " num4="+num4);
+.
+
+
+
+===========================================================================
+
+[[ 복합대입 연산자 ]]
+
+package com.lec.java.j05_02_복합대입연산자;
+
+/* 복합 대입 연산자 compound assignment operators
+ * 
+ * 		+=, -=, *=, /=, %=, ...
+ */
+
+		int num1= 10;
+		System.out.println("num1 = " + num1);
+
+		num1 = num1 + 1;// 기본의 변수값에 +1 증가
+		System.out.println("num1 = " + num1);
+
+		num1 += 1; // +1 이란 뜻의 """복합대입연산자"""
+		System.out.println("num1 = " + num1); //12
+
+		num1 += 20; //32
+		num1 -= 23; //9
+		num1 *= 2; //18
+		num1 /= 3; //6
+		System.out.println("num1 = " + num1);
+
+
+
+
+===========================================================================
+
+[[ 부호 연산자 ]]
+
+j05_03_부호연산자;
+
+
+/* 부호연산자(+, -) sign operator
+ * 	+: 부호 연산자(수의 부호(양,음)가 바뀌지 않음)
+ * 	-: 부호 연산자(수의 부호(양,음)가 바뀜)
+ */
+
+
+	int num1 = -10;
+        int num2 = +num1;
+        int num3 = -num1;
+
+        // !!!!!!!!! 띄어쓰기 중요함!!!!!!!!!!!
+
+int num4 = 11;
+        int num5 = -22;
+        int num6 = num4 + -num5; //33
+        System.out.println("num6 : " + num6);
+
+        int num7 = num4 - -num5; //-11
+		첫- : 산술 연산자
+		뒤- : 부호 연산자
+        System.out.println("num7 : " + num7);
+
+
+===========================================================================
+
+[[ 증감 연산자 ]]
+
+com.lec.java.j05_04_증감연산자;
+
+/* 증감 연산자(++, --) Increment / Decrement Operator
+ *  	++변수: 변수의 값을 1 증가시켜서 저장
+ *   	--변수: 변수의 값을 1 감소시켜서 저장
+ *  
+ *   증감연산자: prefix(접두사) ++num, postfix(접미사) num++
+ *   	접두사(prefix)인 경우에는, 증감(++, --)이 먼저 된 후 다른 연산자가 동작
+ *   	접미사(postfix)인 경우에는, 다른 연산자 먼저 실행된 후 증감(++, --)가 동작
+ */
+		int num1 = 100;
+		System.out.println(num1);
+		++num1;
+		System.out.println(num1);
+		num1++;
+		System.out.println(num1);
+
+
+// 접두 접미
+	int num4 = 100;
+            int num5 = ++num4; //prefix : num4가 101이 된 뒤에 num5로 대입 들어감
+            System.out.println(num4);
+            System.out.println(num5);
+
+	 int num4 = 100;
+            int num5 = num4++; //post fix
+            System.out.println(num4); // 101
+            System.out.println(num5); // 100
+
+// !!!실무에서는 위와 같은 코드 작성하지 말자!!! 
+            int num4 = 100;
+            num4++; // 증감연산자는 가급적 단독으로 사용해!!!!
+            int num5 = num4;
+            System.out.println(num4); 
+            System.out.println(num5); 
+
+
+
+===========================================================================
+
+[[ 비교 연산자 ]]
+
+
+j05_05_비교연산자;
+
+/*
+	관계(비교) 연산자   Equality and Relational Operators
+	
+	 비교 연산의 결과를 참(true) 또는 거짓(false)으로 리턴하는 연산자
+	= boolean 타입!
+
+	 A < B: A는 B보다 작다
+	 A > B: A는 B보다 크다
+	 A >= B: A는 B보다 크거나 같다
+	 A <= B: A는 B보다 작거나 같다
+	 A == B: A와 B가 같다. (= 하나만 쓰면 대입연산자. 같으려면 == 두개)
+	 A != B: A와 B는 다릅니까? ( ! = NO. 부정형)
+ */
+public class Operator05Main 
+
+	System.out.println(10 < 20); // true
+	System.out.println(10 > 20); // false
+	boolean b = 1.2 <= 2.3;
+	System.out.println(b);
+
+	System.out.println(1.2 != 2.3); //true //둘이 다릅니까? -> 다르니까 "참"
+        
+// !!주의!! 실수타입 연산결과의 비교연산!!!!!! 정확도 죽었음!!!!!!!!!! 
+	System.out.println(0.1 + 0.2 != 0.3); // true?!?!?!?
+	// 둘이 다릅니까? -> 같은놈인데 다르대. 이게 참이래 ㅅㅂ
+
+
+
+
+===========================================================================
+
+[[ 논리 연산자 ]]
+
+
+j05_06_논리연산자; 값이 "참거짓" 논리임!
+
+/* 논리 연산자 (logical operator): &&, ||, !, ^
+
+ *	A && B: (AND 연산) A와 B가 ""모두"" 참일 때만 결과가 true, 나머지는 결과가 false
+ *	
+	A || B: (OR 연산) A나 B 둘 중 ""하나가"" 참이면 결과가 true, 둘 다 거짓이면 결과가 false
+
+ *	!A : (NOT 연산. 논리값을 """"반전"""" 시켜주는!! ) A가 참이면 결과가 false로, 거짓이면 결과가 true로 나옴
+
+ *	A ^ B : (XOR 연산)A, B 둘의 논리값이 같으면 false, 다르면 true
+ * 			eXclusive OR (배타적 논리합)
+ * 
+ *  피연산자는 boolean 값
+ *  논리연산자의 결과값도 boolean값
+ */
+
+	int num1 = 10;
+		System.out.println(num1 > 0 && num1 < 100); // true. 1. >, 2.<, 3. && 순으로 연산
+		System.out.println(num1 > 0 && num1 < 10); // 거짓, 둘중 하나가 틀리니까..
+		System.out.println(num1 > 0 || num1 < 10); // 참, 둘중 하나가 맞으니까..
+		System.out.println(num1 < 0 || num1 < 10); // 거짓
+
+		System.out.println(num1 > 0);//참
+		System.out.println(!(num1 > 0)); //거짓, not을 수행하여 "10은 0보다 크지 않니?"로 물어봐서.
+
+		System.out.println(num1 > 0 ^ num1 < 100); //거짓, 둘 다 참으로 같으니까.
+		System.out.println(num1 < 0 ^ num1 < 100); //참, 거짓/참으로 둘의 값이 다르니까.
+
+
+
+
+===========================================================================
+
+07 자바스크립트때 배우는게 좋아서 패스
+
+===========================================================================
+
+[[ 비트 연산자 ]]
+
+
+com.lec.java.j05_08_비트연산자;
+
+/* 비트 연산자 (bit-wise operator) 8비트의 2진수로 계산! 값이 정수임!
+1 : 참 
+0 : 거짓
+ * ★ 비트연산자의 피연산자는 정수!  (논리연산자와 다르다!)
+ *   a & b: (and) a,b가 모두 1 이면 결과도 1, 그 외에는 0
+ *   a | b: (or) a가 1이거나 또는 b가 1이면 결과는 1, a,b 모두 0일 때만 0
+ *   a ^ b: (xor) a와 b 둘 중 하나만 1이 있는 경우는 1, 그 외에는 0
+ *          결국 둘이 같으면 0, 다르면 1
+ *    ~a  : (not) a가 1이면 0, a가 0이면 1로 바꿔줌
+*/
+
+
+	byte n1 = 10; // 2진수로 0000 1010
+	 byte n2 = 7; // 2진수로 0000 0111
+	int result = n1 & n2;	
+	System.out.println("& 결과 = " + result);
+
+        /**
+         *   0000 1010   n1
+         *   0000 0111   n2
+         *   ----------- &
+         *   0000 0010 => 2
+         *  ㄴ2진수 코드=>10진수로 변환
+         */
+
+	result = n1 | n2;
+        System.out.println("| 결과 = " + result);
+        /**
+         *   0000 1010   n1
+         *   0000 0111   n2
+         *   ----------- |
+         *   0000 1111 => 15
+         */
+
+        result = n1 ^ n2;
+        System.out.println("^ 결과 = " + result);
+        /**
+         *   0000 1010   n1
+         *   0000 0111   n2
+         *   ----------- ^
+         *   0000 1101 => 13
+         */
+
+
+
+
+
+"비트 이동(shift) 연산자: >>, <<"
+(웹개발에선 잘 안 쓰이지만.. 게임개발에선 빨리 연산되므로 자주 쓰임!)
+(컴은 뇌가 비트로 이루어져 있자낭)
+
+        int n3 = 10; 
+        result = n3 >> 1; // n3의 비트를 오른쪽(>>)으로 1비트씩 이동.
+        System.out.println(">> 결과 = " + result);
+
+        // 0000 1010 : 10
+        // ↘↘↘↘ ↘↘↘↘
+        // 0000 0101 : 5 2진수니까 1/2 된것.
+
+
+        result = n3 << 1; //= n3 * 2
+        System.out.println("<< 결과 = " + result);
+
+        // 0000 1010 : 10
+        // ↙↙↙↙ ↙↙↙↙
+        // 0001 0100 : 20 2진수니까 2배 된것.
+
+
+
+===========================================================================
+
+ ■  연산의 결과  ■
+
+com.lec.java.j05_09_연산의결과타입;
+/* 산술 연산의 결과 타입
+ * 
+ * 일단 피연산자가 reference type 이면, unbox 후 형변환 수행됨. 그리고 나서
+ * 피연산자중 하나라도 double 이면 다른쪽이 double 이 된다.  
+ * 그렇지 않으면 피연산자중 하나라도 float 이면 다른 쪽이 float 가 된다.  
+ * 그도 아니면 피연산자중 하나라도 long 이면 다른 쪽을 long 으로 바꾼다.  
+ * 그도 아니면 양쪽 피연산자 모~ 두 int 로 바꾼다.
+ * 
+ * https://docs.oracle.com/javase/specs/#5.6.2
+ * 	When an operator applies binary numeric promotion to a pair of operands, 
+each of which must denote a value 
+that is convertible to a numeric type, the following rules apply, in order, 
+using widening conversion (§5.1.2) to convert operands as necessary: 
+ * 	If any of the operands is of a reference type, unboxing conversion (§5.1.8) is performed. Then: 
+ * 	If either operand is of type double, the other is converted to double. 
+ * 	Otherwise, if either operand is of type float, the other is converted to float. 
+ * 	Otherwise, if either operand is of type long, the other is converted to long. 
+ * 	Otherwise, both operands are converted to type int.
+ */
+public class Operator09Main 
+
+ ■	"산술연산의 결과 타입"
+
+	int n1 = 10, n2 = 20;
+        int n3 = n1 + n2; // int+int니까 n3=int
+
+        byte b1 = 10, b2 = 20;
+//		byte b3 = b1 + b2 // byte + byte => int가 되어서 에러!
+        byte b3 = (byte) (b1 + b2); //byte로 명시적 형변환을 해줘야 가능
+
+        long l1 = 10L;
+//		int n4 = n1 + l1; // int + long -> long!
+
+        short s1 = 100;
+//		short s2 = s1 + b1; // short + byte -> int
+
+        float f1 = 1.0f, f2 = 2.0f;
+        float f3 = f1 + f2; // float + float = float
+
+        double d1 = 1.0, d2 = 2.0;
+//		float f4 = f1 + d2; // float + double -> double이 되어야 하는뎅
+
+        long l2 = 27_000_000_000L;//큰수를 읽기 쉽게 숫자 사이에 _ 넣으면 ,의 역할을 함
+                                  // 3000 * 3000 * 3000
+
+        System.out.println("l2 : " + l2);
+
+        l2 = 3000 * 3000 * 3000;
+        System.out.println("l2 : " + l2); // l2 : 1230196224
+        //  27억은 int값을 넘었음! over flow!!!
+        // int 끼리 연산결과 -> int (오버플로 발생!)
+        // 이래서 연산 망하니까... 원시 타입 크기랑 자리수 외우라는거ㅠㅠ
+
+        l2 = 3000L * 3000 * 3000; //맨첨에 L 넣어서 Long 타입으로 변환~!!
+        System.out.println("l2 : " + l2);
+
+        // 복합대입 연산자의 경우...
+        int sum = 0;
+        double d3 = 1.2;
+
+        sum = sum + d3; // int+double=double이 되어야 하는데.. 더블이 어케 인트에 들가ㅠ
+	
+그래서 +=로 바꿔주면....
+
+        sum += d3;
+//        sum = sum + d3 이 아니라
+//        sum = (int)(sum + d3) 으로 동작해서
+//              ↑(정수)(0.0 + 1.2) = 소수점 떼고 1이 됨. => "sum = 1"
+        System.out.println(sum);
+
+
+
+/**
+ ■  Debug (디버깅)  ■
+*	 : 프로그램의 '논리적 오류' 를 찾아내기 위한 작업
+*	: "프로그램의 실력은 곧 디버깅 실력이다!"
+*
+*  step1 : breakpoint 설정  (CTRL + F8)  
+		(목록:  CTRL+SHIFT+F8)
+*  step2 : debug 시작       (SHIFT + F9)
+*	breakpoint 를 만나면 프로그램 실행이 일시 중단된다 -> step3 로
+*  step3 :
+*	step over : 한 단계씩 명령 실행 (F8)
+*	resume : 다음 breakpoint 까지 진행 (F9)
+*
+ ■     확인해야 하는 것들 
+  ( 프로그램이 내 의도대로 흘러가고 있는가? )
+*     1) 프로그램의 흐름
+*     2) 변수값의 변화
+*     3) 호출관계 흐름
+*
+*  step4 : debug 종료 (terminate)  (CTRL+F2)
+*
+*/
+
+
+
+
+===========================================================================
+
+ ■     제어문    ■
+
+\
+j06_01_if_else;
+
+ ■ if, if ~ else 조건문
+ * 
+ * 구문1:
+ * 	if (조건식(必불린타입)) {
+ *  	조건식이 true 일때 실행되는 문장(들) 
+ *  	...
+ * 	}
+ * 
+ * 구문2:
+ *  if (조건식) {
+ *		조건식이 true 일때 실행되는 문장(들)
+ *		...
+ *  } else {
+ *		조건식이 false 일때 실행되는 문장(들)
+ *		...
+ *  }
+ *
+
+("if 조건문");
+		int num = -10;
+		if(num > 0) { System.out.println("양수 입니다."); } 
+		else { System.out.println("음수 혹은 0 입니다."); }
+		
+
+		int num3 = 124;
+		if(num3 % 2 == 0) //짝수라면
+		{	System.out.println(num3 + "는 짝수 입니다.");
+		} else {	System.out.println(num3 + "는 홀수 입니다.");
+		}
+
+
+
+ ■  if ~ else if ~ else조건식
+ * 
+ *  구문3:
+ *  if (조건식1) {
+ *		조건식1 이 true 일때 실행되는 문장(들)
+ *		...
+ *  } else if (조건식2) {
+ *  	조건식1 이 false 이고
+ *		조건식2 이 true 일때 실행되는 문장(들)
+ *		...
+ *  } else if (조건식3) {
+ *  	조건식2 가 false 이고
+ *		조건식3 이 true 일때 실행되는 문장(들)
+ *		...
+ *  } else {
+ *  	위의 모든 조건식 모두 false 일때 수행하는 문장(들)
+ *  	..
+ *  }
+ * 
+ */
+
+
+
+ int korean = 88;
+        int english = 80;
+        int math = 3;
+        int total = korean + english + math; // 총점
+        int average = total / 3; // 평균
+
+        System.out.println("평균 : " + average);
+
+// 가장 자주 발생할 값을 상단에 두어야 부하가 덜 걸림
+// 참일 때 출력문이 짧으면 블럭({)처리 안 해도 괜찮음
+        if (average >= 90) { 
+            System.out.println("A학점");
+        } else if (average >= 80) {
+            System.out.println("B학점");
+        } else if (average >= 70) {
+            System.out.println("C학점");
+        } else if (average >= 60) {
+            System.out.println("D학점");
+        } else {
+            System.out.println("다음 학기에 다시 봐요~ㅠㅠ");
+        }
+
+        // 1. 평균이 90점 이상이면 A학점 (평균: 90 ~ 100)
+        // 2. 평균이 80점 이상이면 B학점 (평균: 80 ~ 89)
+        // 3. 평균이 70점 이상이면 C학점 (평균: 70 ~ 79)
+        // 4. 평균이 60점 이상이면 D학점 (평균: 60 ~ 69)
+        // 5. 평균이 60점 미만이면 F학점
+
+
+
+
+===========================================================================
+
+ ■    삼항 연산자  ternary operator     ■
+
+/*  삼항 연산자 (ternary operator)
+ * 	 (조건식) ? 선택1 : 선택2
+ * 	 (조건식)이 true 이면 선택1이 선택되고,
+ *   (조건식)이 false 이면 선택2가 선택됨.
+ */
+
+		int num1 = 123, num2 = 100;
+		int big;
+
+		big = (num1 > num2) ? num1 : num2;
+		//n1은 n2보다 큽니까 ? 맞으면 좌항으로 : 틀리면 우항으로
+		System.out.println("더 큰 수 : " + big);
+
+
+		// 두 수의 차(diff)
+		System.out.println();
+
+		int num3 = 27;
+		int num4 = 20;
+		int diff = (num3 > num4) ? (num3 - num4) : (num4 - num3);
+		System.out.println("두 수의 차는 : " + diff);
+
+
+===========================================================================
+
+ ■     중첩된 if (nested-if) 문     ■
+
+조건 안의 조건문
+
+ int num = 96;
+        if (num % 2 == 0) {
+            System.out.println("짝수");
+
+            if (num % 4 == 0)
+                System.out.println("4의 배수");
+            else
+                System.out.println("짝수이지만 4의 배수는 아닙니다.");
+        } else {
+            System.out.println("홀수");
+
+            if (num % 3 == 0)
+            System.out.println("3의 배수");
+            else
+            System.out.println("홀수이지만 3의 배수는 아닙니다.");
+        }
+
+
+
+===========================================================================
+
+ ■    중첩된 if (nested-if) 문   ■
+
+ int num = 95;
+        if (num % 2 == 0) {
+            System.out.println("짝수");
+
+            if (num % 4 == 0)
+                System.out.println("4의 배수");
+            else
+                System.out.println("짝수이지만 4의 배수는 아닙니다.");
+        } else {
+            System.out.println("홀수");
+
+            if (num % 3 == 0)
+            System.out.println("3의 배수");
+            else
+            System.out.println("홀수이지만 3의 배수는 아닙니다.");
+        }
+
+06 건너뛰고
+
+
+===================================================================
+ 
+
+ ■ ■ ■   문자열 비교는 절대로 == 를 사용하지 말자    ■ ■ ■
+
+
+
+
+07 j06_07_equals;
+
+/* String 비교, char 비교
+ * - 문자열 비교는 절대로 == 를 사용하지 말자
+ * - 문자열 비교는 equals(), equalsIgnoreCase() 사용!
+ * 
+ * - char 는 기본적으로 정수값 (아스키 코드값) 이라 일반 산술 비교 가능 
+ */
+
+public class If07Main {
+
+	public static void main(String[] args) {
+		System.out.println("String 비교, char 비교");
+
+		{
+			String name1 = "john";
+			String name2 = "john";
+
+			System.out.println("name1 = " + name1);
+			System.out.println("name2 = " + name2);
+
+			System.out.println(name1 == name2);//true
+		}
+		
+		// 문자열 비교는 절대로 == 를 사용하지 말자
+		{
+			String name1 = "john";
+			String name2 = "jo";
+			name2 += "hn";
+
+			System.out.println("name1 = " + name1);
+			System.out.println("name2 = " + name2);
+
+			System.out.println(name1 == name2);//false
+		}
+		
+		
+		// 문자열 비교는 equals() 사용!
+		{
+			String name1 = "john";
+			String name2 = "jo";
+			name2 += "hn";
+
+			System.out.println("name1 = " + name1);
+			System.out.println("name2 = " + name2);
+
+			System.out.println(name1.equals(name2));//true
+		}
+		{
+			String name1 = "john";
+			String name2 = "John";
+
+			System.out.println("name1 = " + name1);
+			System.out.println("name2 = " + name2);
+
+			System.out.println(name1.equals(name2));//false
+			System.out.println(name1.equalsIgnoreCase(name2));//true
+		}
+
+		System.out.println();
+		// char 는 기본적으로 정수값 (아스키 코드값) 이라
+		// 일반 산술 비교가 가능.
+
+		char ch = '뀨';
+
+		System.out.println(ch + "는 ");
+
+		if('0' <= ch && ch <= '9') {
+			System.out.println("숫자입니다.");
+		} else if ('A' <= ch && ch <= 'Z') {
+			System.out.println("알파벳 대문자 입니다.");
+		} else if ('a' <= ch && ch <= 'z') {
+			System.out.println("알파벳 소문자 입니다.");
+		} else if ('가' <= ch && ch <= '힣') {
+			System.out.println("한글 입니다.");
+		} else {
+			System.out.println("몰라요ㅠ");
+		}
+
+
+
+=====================================================================
+
+ ■   스위치 switch   ■
+
+com.lec.java.j07_01_switch문;
+
+
+/* switch (조건) {case1:  case2:}
+ *   (조건)에 따라서 해당 case로 이동
+ *   (조건)에 사용될 수 있는 자료 타입은
+ *    1. int로 변환 가능한 타입들: byte, short, int, char
+ *    2. enum 타입(enum 자료형은 Java 5 버전부터 소개)
+ *    3. String 타입 (Java 7 버전부터 switch 문에서 사용 가능)
+ * 
+ * 	switch (조건값){
+ * 	case 값1:
+ * 		...
+ * 	case 값2:
+ * 		...
+ *	default:
+ *		...
+ *	}
+ *
+ * 해당 조건의 case문을 찾아서 거기서부터 break를 만날 때까지 실행을 함.
+ *  break를 만나게 되면 switch 문장을 종료.
+ *  해당하는 case가 없으면 default 문장을 실행함.
+ *  
+ *  	※ 모든 switch 조건문은 if - else if - else로 바꿀 수 있다. (할수 있어야 한다)
+
+
+	// 도전
+	// switch ~ case 조건문을 사용해서
+	// 짝수 이면 --> "짝수입니다"  출력
+	// 홀수 이면 --> "홀수입니다"  출력
+
+	int num = 99;
+	switch (num % 2) {
+		case 0 :
+			System.out.println("짝수입니다.");
+			break;
+		case 1 :
+			System.out.println("홀수입니다.");
+			break;
+
+
+====================================================================
+
+ ■   이넘 타입 enum  ■
+
+// enum 타입 정의하는 방법: (enumeration)
+	// enum 이름 {}
+	// enum 타입 정의 메소드 안에서는 할 수 없다.
+
+/**
+ *  Enhanced Switch, Switch Expressions
+ *      Java12에 preview 등장 ~ 2020년 Java14 에서 확정
+ *      기존 switch 문의 번잡함, break 누락에 따른 오류 가능성개선.
+ *      화살표 case 라벨, 다중 case 라벨, switch 연산식, yield 예약어 등의 기능이 추가
+ */
+
+package com.lec.java.j07_06_SwitchExpressions;
+
+import com.lec.java.j07_05_EnhancedSwitch.Day;
+
+import static com.lec.java.j07_05_EnhancedSwitch.Day.*;
+//--------------------------------------/-----
+// ㄴ 패키지                            / ㄴ클래스
+//내 패키지는 6번인데 쓸 클래스는 5번이니까 외부에서 임포트로 가져오는 것
+
+/**
+ * Switch Expressions
+ *
+ * ※참고
+ *   식(expression) 과 문(statement) 의 차이!
+ *   '식'은 결괏값(리턴값)이 있다
+ *   '문'은 컴파일러가 '실행'하는 모든 구문들.  (여기에는 expression 도 포함된다)
+ */
+
+		//enum 타입 변수 선언 및 초기화(다른 페이지에서)
+		Days day1 = Days.THU;
+		System.out.println(day1);
+		Days day2 = Days.MON;
+
+		System.out.println(day1 == day2); // ==, != 사용가능!
+//		System.out.println(day2 - day1); //enum 은 산술연산 불가.
+//		System.out.println(day2 > day1 );// 대소 비교 불가.
+
+		switch (day1) {
+			case SUN://enum 타입을 사용하는 스위치에선 enum타입명 생략!
+				System.out.println("일요일");
+				break;
+
+
+
+ // 화살표 case 라벨과 다중 케이스 라벨
+    switch (day) {
+        // case 라벨
+        //화살표 case 라벨(->) 사용하면 마지막에 break 를 사용한 것과 동일
+        case MONDAY, FRIDAY, SUNDAY -> System.out.println(6);
+        case TUESDAY -> { // 여러 문장 수행시 블럭{~} 으로 묶기
+            System.out.println("목요일이다");
+            System.out.println(7);
+
+        // switch expressions(식) 사용
+        // ㄴswitch문이 값을 가진 것
+
+
+// yield 키워드 사용
+        // switch 연산식에서 길이를 return하기 전에 특정 메시지를 출력하고 싶으면 yield 사용
+        {
+            day = MONDAY;
+            int numLetters = switch (day) {
+                case MONDAY, FRIDAY, SUNDAY -> {
+                    System.out.println("Six");
+                    yield 6;
+                }
+                case TUESDAY -> {
+                    yield 7;
+                }
+
+
+// switch 식에선 enum타입(열거타입)을 사용하는 이유
+        {
+            String s = "MONDAY";           // string 의 경우
+            int numLetters = switch(s) {
+                case "MONDAY", "FRIDAY", "SUNDAY"   -> 6;
+                case "TUESDAY"              -> 7;
+                case "THURSDAY", "SATURDAY"    -> 8;
+                case "WEDNESDAY"             -> 9;
+
+
+// int의 s가 String타입이라 대입이 안 됨!
+                // 그래서 꼭 디폴트를 넣어줘야함!!
+                // string 의 경우. 모든 경우 값을 리턴하기 위해선 default 꼭 필요
+                // 아래 Default 를 제거하면 에러다 !!
+                // 'switch' expression does not cover all possible input values
+                // Day는 자료가 7개인데, 월화수목금토일 중 하나라도 빠지면 에러!
+                // ㄴ모든 enum 값들이 case 라벨에서 명시 되어야 한다! 하나라도 빠져면 에러!
+            
+
+
+
+=====================================================================
+
+  [ [    순환문  LOOP    ] ]
+
+
+j08_01_for순환문;
+
+
+/*
+ * ■ 순환문(loop) ■
+ * 	- for
+ * 	- while
+ * 	- do ~ while
+**** for과 while은 완벽히 서로 대치 가능
+ * 
+ * ■ for 순환문 구문 ■
+ * 
+ * for(①초기식; ②조건식; ④증감식){
+ * 		③수행문;
+ * 		..
+ * }
+ *      ①초기식 : 최초에 단한번 수행
+ *      ②조건식 : true / false 결과값
+ *      		위 조건식의 결과가 false 이면 for문 종료
+ *      ③수행문 : 위 조건식이 true 이면  수행
+ *      ④증감식 : 수행문이 끝나면 증감식 수행
+ *               증감식이 끝나면 다시 ②조건식 으로.. 
+ * 
+ * 순환문을 작성시 내가 만드는 순환문에 대해 다음을 확실하게 인지하고 작성해야 한다
+ * 1. 몇번 순환하는 가?
+ * 2. 순환중에 사용된 인덱스값의 시작값과 끝값은? 
+ * 3. 순환문이 끝난뒤 인덱스값은?
+ * 
+ * 
+    for문 작성시 TIP
+	 1) n번 순환 하는 경우 (즉 ""횟수""가 촛점인 경우)
+	 for(int i = 0; i < n; i++){ .. }
+	  * ---------/ ------/ ------/ {}
+	 최초의 i값 / i가 한계범위 안에 있는 동안 / 1씩 늘리거나 줄이기 + {조건식}
+	****등호가 바뀌면 당연히 이 논리는 달라짐****
+	 2) a ~ b 까지 순환하는 경우 (즉 """시작값과 끝값"""이 중요한 경우)
+	 for(int i = a; i <= b; i++){ .. }
+
+
+ */
+
+	for (int i = 0; i < 3; i++) {
+	System.out.println("Hello, Java" + (i+1));
+	}
+//	System.out.println("i = " + i);
+// 	위에서 선언한 i는 for block안에서 선언된 지역변수로만 동작!
+
+//	 for 종료 후에도 index 변수값 확인하려면...
+	int count; // for 바깥에서 index 변수 선언!
+	for (count = 1; count <= 10; count++){
+		System.out.println("count : " + (count));
+	}
+	System.out.println("for 종료 후 count =" + count);
+
+/*
+ * ■ while 순환문 ■
+ * 
+ * ■ [구문] ■
+ * while(조건식) {
+ *    ...
+ * }
+ * 
+ * 조건식이 '참' (true) 인 동안 while 블럭 반복
+ * = 조건식이 거짓이 나올 때까지 반복됨.
+ */
+
+
+/* ■  break; ■
+ 순환문(for, while, do~while) 안에서 break를 만나면
+ break를 감싸는 가장 가까운 순환문 종료
+ 
+/* ■ continue; ■
+ 순환문(for, while, do~while) 안에서 continue   를 만나면
+ continue를 감싸는 가장 가까운 순환문 으로 돌아감
+ 
+  순환문은 종료하지 않고 . 특정 조건만 ""스킵!""
+ */
+
+
+=====================================================================
+
+  [ [    배열  Array    ] ]
+■
+★
+
+■ 배열(Array) ■
+ 동일 타입의 여러개의 데이터를 담는 집합자료형
+ 	
+// 배열이 필요한 이유.
+// 동일타입 데이터(들)을 위해 매번 새로운 변수생성 불가.
+
+ 	- 배열 선언
+ 		자료타입[] 변수이름;
+ 		
+ 	- 배열 원소 (element)
+ 		배열에 담긴 각각의 데이터
+ 		
+ 	- 배열의 길이 (length)
+ 		배열 원소의 개수, 즉 배열에 담긴 데이터의 개수 
+ 		
+ 	- 배열 인덱스 (첨자, index)
+ 		배열의 인덱스는 ★0부터 시작★해서, (배열의 길이 - 1)까지가 됨
+ 		배열인덱스를 사용하여 배열원소에 접근하여 사용
+ 	
+ 	- 배열을 ★new로 생성한 뒤에는 자동초기화★ 가 됨.
+		★숫자타입(바숏인롱 플덥챠)들은 --> 0으로
+		★boolean타입은 --> false 로
+		★객체타입(Object) 타입은 --> null 로.
+ 	
+ 	★ 배열변수의 타입, 배열원소의 타입 확실히 구분하자
+ 	★ JVM 메모리 상에 생기는 구조 이해 필수 
+
+
+
+ korean의 타입은? --> int[] 타입(""인티져형 배열"" 이라 읽기)
+        // korean[0]의 타입은? --> int 타입
+        //                        int는 for문과 궁합이 잘 맞음
+
+int[] english = new int[5]; //int타입의 배열 english에 5개를 담는 배열로 초기화
+
+
+
+■ 배열의 선언과 초기화 ■
+ 	
+ 	배열 선언 따로, 초기화 따로
+		타입[] 이름 = new 타입[배열의 길이];
+		
+	배열을 선언과 동시에 초기화 1 ★★초기화할때만 가능
+		타입[] 이름 = new 타입[] {a, b, c, ...};
+		
+	배열을 선언과 동시에 초기화 2! ★★초기화할때만 가능
+		타입[] 이름 = {a, b, c, ...};
+		
+	배열의 길이를 자동으로 알 수 있는 방법
+		배열이름.length 
+ */
+
+("[1] double형 배열");
+		// 타입[] 이름 = new 타입[배열 길이];
+		// 타입[] 이름 = new 타입[] {a, b, ...};
+		// 타입[] 이름 = {a, b, ...};
+
+		double[] array1 = {1.2, 2.3, 3.4};
+"[2] char형 배열");
+		
+		char[] array2 = new char[5];
+		array2[0] = 'A';
+		array2[1] = 'B';
+		array2[2] = 'C';
+		array2[3] = 'D';
+		array2[4] = 'E';
+
+"[3] boolean형 배열");
+
+		boolean[] array3 = new boolean[4];
+		for (int i = 0; i < array3.length; i++) {
+			System.out.println(array3[i]);
+		}
+
+"[4] String형의 배열");
+
+		String[] array4 = new String[3];
+		array4[0] = "Hello";
+		array4[1] = "World";
+		array4[2] = "절미";
+	//array4의 타입 : ""String 타입의 배열""
+		//array4[0]의 타입 : "String"
+
+
+
+
+========================================================================
+  [ [    ★★★ 자바에서 생성되는 메모리(램에 들어가는 데이터) ★★★    ] ]
+
+메소드 영역 / 내용 : byte code, 리터럴, 상수, 스태틱 / 프로그램 시작시 생성, 종료시 소멸
+힙 / 객체, 배열, new로 생성되는 모든것 / new생성시 생성. 레퍼런스가 끊기면 가비지 콜렉션에 의해 자동소멸
+스택 / 지역변수, 매개변수 / 블럭 안에서 선언될 때 생성. 블럭 끝날 때 소멸
+
+
+
+
+
+========================================================================
+
+  [ [    다차원 배열    ] ]
+
+■ 2차원 배열 (2-dimensional array)■
+ * 	직전의 예제와 같이 같이 배열 첨자를 하나만 쓰는 배열을 
+ *  1차원 배열 (one-dimensional array) 이라고 함
+ *   배열 첨자를 2개사용하면 2차원 배열
+ *   배열 첨자를 3개사용하면 3차원 배열
+ *   ...
+ *  
+ *   배열원소가 '1차원 배열' 들로 이루어진 배열을 2차원 배열 이라 한다  (배열첨자 2개 사용)
+ *   배열원소가 '2차원 배열' 들로 이루어진 배열을 3차원 배열 이라 한다  (배열첨자 3개 사용)
+
+// ※ 흔히 2차원 배열을 행과 열로 표현하기도 함
+// array 는 행(row) 3개, 열(column)이 2개인 2차원 배열
+
+		// arr1 <-- int[] <-- int형 1차원 배열
+		// arr1[0] << int << int타입. 0차원 값(스칼라 값). 차원값 없음
+		// 다차원 배열의 원소 값은 -1차원이 됨!!!
+
+			int[][] array = new int[3][]; //1차원 배열x3개를 가진 ""2차원 배열을 생성""
+			//array 의 타입? >> int[][] 인티져형 2차원 배열
+			//array[0]의 타입? >> int[] 인티져형 1차원 배열
+			//array[0][0] 타입? >> int
+		// array.Length <--2차원 배열의 원소, 즉 1차원 배열의 개수
+		// 1차원에 3개니까 3. 행=(1, 3, 5)
+		System.out.println("array.length = " + array.length);
+		System.out.println(array[0].length); //2. 1차원배열이 2개자낭. 열(1&2)
+
+
+■ 가변 배열 ■ 
+ *  ragged array (혹은 jagged array)
+ *  column(열)의 개수가 일정하지 않은 배열
+ *
+ *  가변 배열 선언 방법: 행의 개수만 지정을 하고, 열의 개수는 비워둠
+ *  열(column)이 몇 개가 될 지 모르기 때문에 메모리 할당이 되지 않습니다.
+
+ex)
+int[][] array = {
+		{1, 2},
+		{3, 4, 5, 6},
+		{7, 8, 9},
+	};
+
+■ Enhanced for (향상된 for) 문 ■
+ 	
+ for (배열타입 변수 : 배열이름) { ... }
+
+
+■■■■■ Reference 타입 주의할 사항 ■■■■■■
+int[] arr = ■■■new■■■ int[] {~};
+	ㄴnew 할 때마다 HEAP 메모리에 새 객체를 생성한다!!!!!
+
+        int a = 10;
+        int b = 20;
+
+        System.out.println("a:" + a + " , b:" + b);
+        a = b; // '값'의 복사다.
+        System.out.println("a:" + a + " , b:" + b);
+        a = 30;
+        System.out.println("a:" + a + " , b:" + b);
+
+        int[] arrA = new int[]{10, 10, 10};
+        int[] arrB = new int[]{20, 20, 20};
+        System.out.println("A:" + Arrays.toString(arrA) + ", B:" + Arrays.toString(arrB));
+        arrA = arrB; //이것도 '값'의 복사. 단!!!!! 레퍼런스 타입이기에 가진게 '주소값'이므로 주소값의 복사 발생!
+        System.out.println("A:" + Arrays.toString(arrA) + ", B:" + Arrays.toString(arrB));
+        arrA[0] = 500; // arrA와 arrB는 동일 객체를 참조한다. 
+        System.out.println("A:" + Arrays.toString(arrA) + ", B:" + Arrays.toString(arrB));
+
+package com.lec.java.j11_10_main의args;
+
+/* main() 의 매개변수 String[] args
+ */
+public class Array10Main {
+
+	/**
+	 * IntelliJ 에선
+	 * ①
+	 * main() 좌측의 실행버튼 ▷ 을 눌러서 run configuration 을 추가한뒤
+	 * Edit configurations... 에 들어가서 Program arguments 에 실행 옵션 추가
+	 *
+	 * ②
+	 * 터미널 창에서
+	 * > cd \out\production\Lec11_Array
+	 * > java com.lec.java.j11_10_main의args.Array10Main aaa bbb ccc
+	 *
+	 */
+
+	public static void main(String[] args) {
+		System.out.println("main 메소드 매개변수: String[] args");
+
+		System.out.println("args.length = " + args.length);
+		for(String x : args){
+			System.out.println(x);
+		}
+
+		System.out.println("\n프로그램 종료");
+	} // end main
+
+} // end class Array12Main
+
+
+
+
+
+
+
+
+==================================================================
+
+  [ [          ] ]
+
+/* java.util.Arrays 클래스
+     배열을 다루는 유용한 메소드들 제공
+		Arrays.toString() : 문자열 형태로 리턴
+		Arrays.copyOf(원본배열, 복사할 length)
+		Arrays.copyOfRange(원본배열, from, to))
+		Arrays.fill()  : 배열에 특정 값으로 채우기
+		Arrys.sort(원본배열) :  오름차순 변경
+		Arrays.asList() : array -> List 로
+ */
+public class Array11Main {
+
+	public static void main(String[] args) {
+		System.out.println("java.util.Arrays 클래스");
+
+		int[] arr = {10, 20, 30, 40, 50};
+
+		System.out.println(Arrays.toString(arr));// [10, 20, 30, 40, 50]
+
+
+		// Arrays.copyOf(원본배열, 복사할 length)
+		// 배열을 복사하여 새로운 배열생성하여 리턴
+		System.out.println("\nArrays.copyOf()");
+		int[] arr2 = Arrays.copyOf(arr,3);//(원본배열, length 부분 개수)
+		System.out.println(Arrays.toString(arr2));
+
+		arr2 = Arrays.copyOf(arr,10);//(5개인데 10개 달래서 기본값으로 채워줌)
+		System.out.println(Arrays.toString(arr2));
+
+		// Arrays.copyOfRange(원본배열, from, to))
+		// from 부터 to 직전까지 복사
+		System.out.println("\nArrays.copyOfRange()");
+		arr2 = Arrays.copyOfRange(arr, 1, 4);//1번째부터 4번 전까지 보여줌
+		System.out.println(Arrays.toString(arr2));
+
+		// Arrays.sort(원본배열)
+		// 오름차순 변경.  원본 배열을 변경시킨다
+		// 내림차순은 지원하지 않는다.
+		System.out.println("\nArrays.sort()");
+		int[] arr7 = {8, 9, 3, 5, 1, 2};
+		System.out.println(Arrays.toString(arr7));
+		Arrays.sort(arr7);
+		System.out.println(Arrays.toString(arr7));
+
+
+		// Arrays.equals(배열1, 배열2)
+		// 배열원소를 순서대로 하나하나 비교한 결과  true/false
+		System.out.println("\nArrays.equals()");
+		int[] arr8 = {10, 20, 30};
+		int[] arr9 = {10, 20, 30};
+		System.out.println(arr8 == arr9); //주소값이 다르므로 8번과 9번은 다르다!
+//			그래서 스트링을 비교할 때도 내용비교하는게 아니라,
+//			걔가 가진 주소값을 비교하므로 false 라고 나옴!
+		System.out.println(arr8.equals(arr9));//얘도 false...
+		System.out.println(Arrays.equals(arr8, arr9));//이게 내용비교할때 쓰임
+
+
+
+
+
+
+====================================================================
+
+  [ [    메소드 Method    ] ]
+■■ 메소드 ■■
+ 반복되는 코드, 내용, 재사용해야할 코드들을 한 뭉치로 묶어서
+ 따로 메소드로 만들은 다음(정의) 이를 필요할때마다 사용(호출)한다. 
+ 		
+ ※ 자바는 '함수(function)' 가 따로 없습니다
+ 그러나 교육하면서 편의상, 혼용하여 말하겠습니다.
+ 		
+
+ 메소드 정의:
+	 메소드는 main 메소드 바깥에서!!, class 안에서 정의!!
+
+ 메소드 정의구문:
+	수식어     리턴타입     메소드이름 (매개변수, ...) { ...본체... }
+	modifier return_type  method_name(parameter, ...) { ...body... }
+	
+	수식어(modifier) : public, static, private, ... (생략 가능)
+	   
+	매개변수 (parameter) : 메소드 호출시 넘겨주는 값.
+
+	리턴타입 (return type) : 메소드 종료후 호출한 쪽에 돌려주는 값
+		void, int, double, String ...
+		(리턴타입 void의 의미는 되돌려주는 값(return 값)이 없다는 의미)
+	
+메소드 signature 란?:
+	메소드 이름 + 매개변수 리스트 (매개변수 타입, 순서, 개수)
+		sayAge(int)
+		sayHello3(String, int)
+			
+
+
+■■ 리턴 return ■■
+return 의 의미
+ * 
+ *   1. 메소드를 호출한 곳으로 값을 리턴한다.
+ *   2. 메소드 종료
+ *   3. 메소드 정의시 명시한 리턴타입의 값이 '반드시' 리턴되어야 한다
+ *          (혹은 리턴타입으로 형변환 가능한 값이)
+ */
+//return 다음에 오는 문장은 수행이 불가능. 얘가 메소드 종료를 알리는 놈이라...
+
+
+// 메소드의 매개변수로 정수 두 개를 넘겨주면(입력값 이라고도 함)
+        // 그 결과로 더한 값을 되돌려 받고 싶다.(출력값 이라고도 함)
+        int result;
+        result = add(110, 220);// add(int, int) 의 리턴값을 result 에 대입.
+        System.out.println("result = " + result);
+
+        System.out.println(sub(100, 200));
+        result = sub(add(10, add(100, 300)), 100);
+        /*
+        ①   sub(         , 100 )
+                  ↑
+        ②     add(10,         )
+                      ↑
+        ③        add(100, 300)
+
+
+           호출순서 : ① ② ③
+           리턴순서 : ③ ② ①
+        */
+
+
+======================================================================
+
+  [ [          ] ]
+■■
+★
+ * IntelliJ 단축키 : 메소드 이름위에서 (호출, 정의)
+ *     CTRL + B : Declaration or Usage
+ *  ALT + F7 : Find Usage
+ *  ALT + ↑, ALT + ↓ : 메소드 단위 커서 이동
+ *  CTRL + SHIFT + ↑, CTRL + SHIFT + ↓ : 메소드 이동
+ *  CTRL + P : parameter info
+
+   Refactor - Introduce Variable  CTRL + ALT + V
+   Refactor - Inline Variable  CTRL + ALT + N
+
+
+ *
+ * 디버깅 :
+ *   step into : 현재 디버깅 위치의 메소드 호출 내부 코드 진입
+ *   step out (step return) : 현재 디버깅 진행중인 메소드 return 까지 진행후 호출한 측으로 돌아감
+ *   resume : 다음 breakpoint 까지 쭈욱 진행
+
+
+
+//메소드 정의 위에 아래와 같이 javadoc 타입 주석을 달아두면
+	// 코드내에서 참조 가능!
+	/**
+	 * 메소드 이름은 : sayHello
+	 *	 주어진 이름을 출력합니다.
+	 * @param name 이름
+	 */
+	public static void sayHello(String name) {
+
+
+====================================================================
+
+■■    Method Overloading (메소드 중복 정의)    ■■
+	메소드 오버로딩
+
+★★같은 이름으로 메소드를 매개변수 리스트를 달리하여 중복 정의, ★★
+	 즉, 이름이 같아도 메소드 signature 가 다르면 중복정의 가능.
+	
+★★  Method Signature 란
+	   메소드 이름 + 매개변수 리스트 (parameter list) (개수, 타입, 순서) 
+	
+	 1. 매개변수의 ★개수가 다르거나 
+	 2. 매개변수의 ★자료형(타입)이 다르거나
+	 3. 매개변수의 ★순서가 다를 때
+	 위 3개를 '매개변수 리스트' 라 한다
+	
+     메소드의 ★★★리턴 타입만 다른 경우는 중복 정의할 수 없다!!★★★
+
+     메소드 오버로딩의 장점:
+	동일한 동작을 하는 메소드에 대해 매개변수만 달리하여 중복정의 하면
+	이 메소드를 사용하는 입장에선 여러타입의 이름을 익힐 필요가 없다. 
+
+// 매개변수가 자동형변환 될 수 있는 메소드가 있으면 그것이 호출된다.
+        sayHello('A');//sayHello(int) 호출. char->int
+        byte b = 10;
+        sayHello(b);//(바이트<인트 이므로 쇼트로 자동 형변환됨)
+
+        // printInt (10)
+        // printdouble(3.14)
+        // printString("Hello")
+        // ....
+        // 위와 같이 매개변수마다 익혀야 하는 메소드들의 이름이 서로 다르면 힘들다
+
+//    // 리턴타입이 다르다고 오버로딩으로 인정되지 않음.
+//    public static int sayHello(){
+//        return 0;
+//    }
+
+
+
+Math 클래스의 메소드
+// double Math.floor(num): num이하의 수 중 가장 큰 정수(바닥)
+		// double Math.ceil(num): num이상의 수 중 가장 작은 정수(천장)
+		// long Math.round(num): num에서 소수점 사사오입 (반올림)
+
+
+
+
+
+=======================================================================
+
+  [ [         ] ]
+
+■■
+★
+■■  Call By Value : 값에 의한 호출
+ 	Call By Reference : 참조에 의한 호출
+ 	
+ 	메소드 호출시 매개변수에 넘겨주는 값의 '복사' 가 발생.
+ 	
+ 	자바에선
+ 	primitive type 이 매개변수 인 경우 Call By Value
+ 	 		: '값' 이 복사된다 
+ 	 		: 메소드에서 매개변수 값을 변경해도 호출한 원본 쪽은 변화 없슴
+ 	 		
+ 	reference type 이 매개변수 인 경우 Call By Reference 발생
+ 			: '값' 복사된다. (주소값★)
+ 			: 메소드에서 매개변수 를 통해 변경하면 호출한 원본 쪽도 변화 발생
+ 	
+
+
+■■ 재귀 호출 (recursive call)
+ * 메소드(혹은 함수) 내부에서 메소드가 자기 자신을 또다시 호출하는 것.
+ * 
+ * 장점:
+ * 	복잡한 문제를 간단하고 논리적으로 기술 가능.
+ * 
+ * 단점 & 주의 :
+★ 메모리 부담 발생 
+ * ★ 무한히 재귀호출 할수 없다. --> Stack Overflow 발생
+ *   따라서 재귀호출은 ★'종료조건'이 반드시 필요하다.
+ * 
+// 무한정 재귀호출 불가 : StackOverFlowError 스택 메모리 공간 꽉찼음
+	public static void showNumber(int n){
+		System.out.println(n); 아랫줄도 넘어감
+		showNumber(n+1); 윗줄이랑 무한히 서로 호출함
+		System.out.println("리턴: 찍힐까요?"); ->안 찍혀용
+
+//		Stack 메모리 용량 초과 : StackOverFlowError
+//		showNumber(1);
+
+        // Heap 메모리 용량 초과 : OutOfMemoryError
+//		int n = Integer.MAX_VALUE;
+//		double[] arr = new double[n];
+
+
+■■ 가변인자 (가변매개변수,가변인수) Variable arguments
+   Java 5.0 부터 등장
+     매개변수(argument, 인자)의 개수를 가변적으로 조정하는 기술
+     ** 가변인자 기술이 없던 시절에는 '컬렉션' 사용.
+
+     컴파일러에서 가변인자를 아래와 같이 변환해준다.
+  
+   1) 매개변수를 배열로 변환해준다
+        원본 : public static void display★(String... args)★ <-스트링 타입의 매개변수를 여러개 받을 수 있다
+        컴파일러 변환 후 : public static void display(String args[])
+  
+   2) 메소드 호출시 인자들을 이용해서 배열로 만들어 준다
+        원본 : VarArgsMain.display("Hello", "World", "Korea");
+        컴파일러 변환 후 : VarArgsMain.display(new String[] {"Hello", "World", "Korea" })
+
+=========================================================================
+
+■■■■    문자열 (String) 관련 메소드들     ■■■■
+
+ * 
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html
+ * - 문자열 메소드는 꼭 정독해보세요.
+ * - 매개변수의 의미, 동작의 의미, 리턴값의 의미 꼭 숙지해주세요
+ * - 인스턴스 메소드 인지, 클래스 메소드(static) 인지 구분 
+
+★주의★
+	// 문자열(String) 객체는 (내용이) 변경불가(immutable) 이기 때문에
+	// 메소드 수행했다고 하여 원본이 변경되지 않는다.
+// ★주의★
+	// empty 문자열과 null 은 다르다
+	// null 인 경우 메소드 수행하면 NullPointerException 발생!
+
+	str3 = ""; //empty 문자열, 문자열 객체는 '존재'하나 비어있는 문자열.
+	System.out.println(str3.length());
+	str3 = null; //null, 문자열 객체가 존재하지 않는다는 뜻
+//	System.out.println(str3.length());
+//	-> NullPointerException (=NPE) : 널값에 . 붙이는 순간 발생ㅎ 
+				    그러므로 이게 뜨면 . 의 왼쪽놈을 의심
+■ charAt(index)		
+문자열 안의 특정위치(index)의 문자 리턴, 인덱스 범위 벗어나면 StringIndexOutOfBoundsException
+// 문자열 인덱스는 0 부터 시작!
+
+■ indexOf(char), indexOf(String)
+/ 문자열 안에서 특정 문자(char) 혹은 문자열(String)의 위치(index), 발견 못하면 -1 리턴
+
+■ toUpperCase(), toLowerCase");  // 대문자 변환, 소문자 변환
+
+■startsWith(), endsWith()");  
+// 문자열이 주어진 prefix문자열로 시작하는지 여부 true/false 리턴
+	String prefix = "http://";
+	String url = "www.google.com";
+	System.out.println(url.startsWith(prefix));
+
+■ split(regex)"); // 문자열을 주어진 문자열로 쪼개어 String[](스트링형배열)에 리턴
+		String str4 = "HH:MM:SS";
+		String[] arr = str4.split(":"); > :가 위치한 단위로 짜름
+		System.out.println(Arrays.toString(arr));
+		str4 = "2024-09-20 12:41:32";
+		String[] arr2 = str4.split(":");
+		String date = str4.split(" ")[0];
+		String time = str4.split(" ")[1];
+		String year = date.split("-")[0];
+		System.out.println(Arrays.toString(date.split("-")));
+		System.out.println(Arrays.toString(time.split(":")));
+
+		str4 = "Hello my WORLD";
+		System.out.println(Arrays.toString(str4.split(" ")));
+		str4 = "   Hello    my    WORLD     ";
+		System.out.println(Arrays.toString(str4.split(" ")));
+
+// 공백기준으로 쪼갤때는 정규표현식의 \s+  사용하기 : 공백, 탭, 줄바꿈
+		arr = str4.trim().split("\\s+");
+		System.out.println(Arrays.toString(arr));
+
+// 단!  "|" 을 할경우는 주의,   ※ split(정규표현식) 을 사용하는 메소드임
+
+■  String.join() 
+// 문자열들, 문자열 배열  --> 하나의 문자열로 합하기     split() 과 반대
+("String.join(delimeter, elements ...)");
+String[] str7 = {"Alice", "Bob", "Carol"};
+System.out.println(String.join(" - ", str7));
+-> Alice - Bob - Carol
+
+
+■"substring(beginIndex, endIndex)"  
+// 문자열의 일부분 추출 beginIndex ~ endIndex직전 까지,  인덱스 범위 벗어마면 IndexOutOfBoundsException 
+		String str8 = "Hello Java";
+System.out.println(str8.substring(2,5));//인덱스 2부터 5 전까지 출력해라
+System.out.println(str8.substring(6));//인덱스6부터 끝까지 출력해
+		
+
+■trim()  // 좌우의 여백 제거
+String str9 = "   김동후   ";
+		System.out.printf("[%s]\n", str9);
+		System.out.printf("[%s]\n", str9);
+
+// Java11 에 추가:
+■strip()   좌우 공백 제거
+■ stripLeading()  좌측 공백 제거
+■ stripTrailing() 우측 공백 제거
+//		System.out.printf("[%s]\n", str9);
+//		System.out.printf("[%s]\n", str9);
+//		System.out.printf("[%s]\n", str9);
+
+
+■ repeat(n) 문자열 반복
+		System.out.println("-".repeat(20));
+
+■ "replace(target, replacement)");   // 문자열 치환  target → replacement  
+		String str10 = "Hello Language My Language";
+		System.out.println(str10.replace("My","Our"));
+		System.out.println(str10.replace("Language","Java"));
+		>> Hello Language Our Language
+		>> Hello Java My Java
+		매칭되는 건 '모두' 치환!!!
+
+■replaceAll(regex, replacement), replaceFirst(regex, replacement
+ // 정규표현식 사용버젼 
+■ replaceAll() 매칭되는것 전부 치환, 
+■ replaceFirst() 첫매칭만 치환 //문자열에서 매칭되는 첫번째 regex만 치환 
+
+■ ("equals(), equalsIgnoreCase()");  // 문자열 비교
+		String str11 = "Java";
+		String str12 = "java";
+■ "String.format()");
+
+■ "isEmpty(), isBlank()");
+		System.out.println("".length() == 0);
+		System.out.println("".isEmpty());
+		System.out.println("    ".isEmpty());//false. 아예 아무것도 없이 텅 비었다
+		//빈 문자열인지 여부
+		System.out.println("    ".isBlank());//true. 공백문자(띄어쓰기, 줄바꿈 등)가 있따
+		//공백 문자열인지 여부
+
+==============================================================================
+
+	■  ■   정규표현식 regular expression   ■  ■
+
+ * 문자열 ■■ 검색, 치환 ■■ 등의 동작에 있어서
+ * 단순한 '문자열 비교' 를 하는 것이 아니라 
+ * 특정 ■'패턴'■과 비교하고자 할때 이를 단 몇줄의 코드로 구현 가능!
+ * 주어진 문자열에서 패턴을 찾아내는 것을 '패턴 매칭(pattern matching)' 이라 함
+ * 
+ * 사용자가 입력한 문자열 패턴 유효성 체크 등에 많이 사용
+ * 		ex) 주민등록번호, URL, email, 비밀번호, 
+ * 		     날짜포맷(yyyy-mm-dd) 
+ * 		     전화번호(010-xxxx-xxxx) ... 
+ * 
+ * 자바는 java.util.regex 에서 관련 클래스들 제공
+ ■ Pattern, Matcher ..
+ * 
+ ■  일반적인 작성단계
+ *   1) 주어진 정규표현식을 구현하는 Pattern 객체 생성
+ *   2) 패턴 매칭 수행객체 Matcher 생성
+ *   3) Matcher 객체로부터 패턴매칭을 수행하여  검색, 치환등의 동작
+ * 
+ * 장점: 코딩량 저감, 거의 대부분의 언어에서 공용으로 사용.
+ * 단점: 처음에 배우기 어렵고, 코드 가독성 떨어뜨림.
+ * 
+★★★★★ 정규표현식을  사용하는 String 메소드들 ★★★★★
+ *  matches(), split(), replaceAll(), replaceFirst()
+ * 
+ * 정규표현식 연습 사이트 추천
+ * : https://regexr.com/    (정규식 , 문자열 매칭 연습)
+ * : https://regexone.com/  ( step by step 으로 연습 하기 좋음)
+ * : https://regexper.com/  (특징: 시각화, 정규식을 이미지로 다운가능)
+ * : https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html  (오라클 공식)
+ * ─────────────────────────────────────────────────────────────
+ * 정규표현식	설명
+ * ^		문자열 시작
+ * $		문자열 종료
+ * .		임의의 문자 [단 ‘'는 넣을 수 없습니다.]
+ * *		앞 문자가 0개 이상의 개수가 존재할 수 있습니다.
+ * +		앞 문자가 1개 이상의 개수가 존재할 수 있습니다.
+ * ?		앞 문자가 없거나 하나 있을 수 있습니다.
+ * []		문자의 집합이나 범위를 표현합니다. -기호를 통해 범위를 나타낼 수 있습니다. ^가 존재하면 not을 나타냅니다.
+ * {}		횟수 또는 범위를 나타냅니다.
+ * ()		괄호안의 문자를 하나의 문자로 인식합니다.
+ * |		패턴을 OR 연산을 수행할 때 사용합니다.
+ * \s		공백 문자
+ * \S		공백 문자가 아닌 나머지 문자
+ * \w		알파벳이나 문자
+ * \W		알파벳이나 숫자를 제외한 문자
+ * \d		[0-9] 숫자
+ * \D		숫자를 제외한 모든 문자
+ * (?i)		대소문자를 구분하지 않습니다.
+((( -> 거의 모든 프로그램 공통)))
+
+ * 자바 정규표현식에 사용되는 escaped character 들
+ *    \.[]{}()<>*+-=!?^$|
+ */
+
+■ 정규표현식 객체, 메소드 연습"
+"패턴] .  ← 임의의 문자 하나"
+		
+■ 1).주어진 정규표현식을 구현하는 Pattern 객체 생성
+     Pattern.compile(정규표현식 문자열) 사용  
+
+	regex = "My...."; // My로 시작하고, 임의의 문자 4개가 따라올 패턴이다.
+	pat = Pattern.compile(regex);//얘로 위의 패턴객체를 생성한 것.
+
+	input = "-My1234-";
+	System.out.println("input : " + input);
+
+
+■ 2) 패턴 매칭 수행객체 Matcher 생성
+	// Pattern 의 matcher() 사용
+	// Pattern을 사용해서 주어진 문자열에서 패턴 매칭할 객체 생성 --> Matcher객체 리턴
+	// (아직 패턴 매칭을 진행하진 않았다)
+		
+	matcher = pat.matcher(input); // 패턴 매칭할 Matcher 객체 생성
+
+
+■ 3) Matcher 객체로부터 패턴매칭을 수행하여  검색, 치환등의 동작  
+	//  find() '다음' 패턴매칭 검색 , 패턴매칭 발견하면 true 아니면 false 리턴
+	//  group() 바로 직전에 패턴매칭된 문자열 String 리턴
+	//  reset() 다시 처음부터 패턴매칭하도록 reset 함.
+	//  replaceFirst() : 첫번째 매칭을 치환
+	//  replaceAll() : 모든 매칭을 치환
+	//  matches() : 패턴매칭이 '문자열 전체영역' 이 패턴매칭 되는지 여부
+	//  start() : 최근 매칭의 시작 index, 
+	//  end() : 최근 매칭의 끝 index (마지막 매칭된 문자 '다음' 인덱스값)
+
+//		System.out.println(matcher.find()); // true 리턴해줌. 첫번째꺼부터 찾아서.
+//		System.out.println(matcher.find()); // false 리턴해줌. 또 호출하면 두번째꺼부터 찾음.
+	if(matcher.find()) {
+	   System.out.println(matcher.group() + " {" + matcher.start() + "~" + matcher.end() + "}");
+            // 매칭되면 그게 무엇인지, 그리고 걔의 어디부터 몇번 인덱스까지 매치되고 어디가 끝인지 말해줭
+        }
+
+
+// 	위를 다시 실행하면?, 다음 패턴매칭을 시도한다 --> 결과는 실패!
+■ find() 를 계속 호출하면 위에서 매칭한 이후부터 매칭을 시도한다
+if(matcher.find()) {
+   System.out.println(matcher.group() + " {" + matcher.start() + "~" + matcher.end() + "}");
+} else {
+   System.out.println("find() 실패");
+}
+
+■ reset() 다시 처음(index 0)부터 패턴매칭하도록 reset 함.
+        matcher = matcher.reset();
+
+	// 다시 시도하면 매칭이 된다.
+if(matcher.find()) {
+   System.out.println(matcher.group() + " {" + matcher.start() + "~" + matcher.end() + "}");
+} else {
+   System.out.println("find() 실패");
+}
+
+
+■ replaceFirst() : 첫번째 매칭 패턴을 치환하여 결과 리턴
+        System.out.println(matcher.replaceFirst("XXXX")); //-XXXX- 리턴
+
+        // matches()
+        // 패턴매칭이 '문자열 전체영역' 이 패턴매칭 되는지 여부(true/false)
+        System.out.println();
+        System.out.println("matches()");
+        matcher = pat.matcher("-My1234-");//fail
+        if(matcher.matches()) {
+            System.out.println("matches() 전체매칭 OK");
+        } else {
+            System.out.println("matches() 전체매칭 FAIL");
+        }
+
+        System.out.println("");
+        matcher = pat.matcher("My1234");//true
+        if(matcher.matches()) {
+            System.out.println("matches() 전체매칭 OK");
+        } else {
+            System.out.println("matches() 전체매칭 FAIL");
+        }
+
+■ "Pattern.matches(regex, input) 사용");
+// 단순히 '문자열 전체영역' 이 패턴에 맞는지 여부 만 확인하려면 간단하게 Pattern.matches() 사용하자.
+        // Pattern.matches()는 내부적으로 정확히 아래와 같이 동작하게 된다.
+        //     Pattern.compile(regex).matcher(input).matches()
+        if(Pattern.matches("My....", "Myabcd")) {
+            System.out.println("Pattern.matches() 매칭 OK");
+        }else{
+            System.out.println("Pattern.matches() 매칭 FAIL");
+        }
+
+■ 여러개 패턴 검색 및 치환;
+
+        // 과연 "My...." 으로 몇개가 매칭되나?  : 예측해보자
+        // 기본적으로 대소문자를 구분하여 매칭한다
+        input = "-My98KK-myABCD--My1234567--MyZZ---My789";
+        System.out.println(input);
+
+	matcher = pat.matcher(input);
+        while(matcher.find()) {
+            System.out.println(matcher.group() + " {" + matcher.start() + "~" + matcher.end() + "}");
+        }
+        System.out.println();
+        System.out.println(matcher.replaceFirst("***"));
+        //-***-myABCD--My1234567--MyZZ---My789
+        System.out.println(matcher.replaceAll("***"));
+        //-***-myABCD--***567--***-My789
+
+
+
+■ find(fromIndex)   // fromIndex부터 검색
+        matcher = matcher.reset();
+        int fromIndex = 16;
+        while(matcher.find(fromIndex)) {//16번째부터 찾음
+            System.out.println(matcher.group() + " {" + matcher.start() + "~" + matcher.end() + "}");
+            fromIndex = matcher.end();//끝까지 다 출력해라
+        }
+
+■ 그룹(group) 
+ * 정규표현식에 () 을 사용하여  패턴 내에서 '그룹'을 지정 하면
+ * () 의 개수만큼 그룹이 만들어진다.
+
+	regex = "(My)(....)";  // 정규표현식에 () 사용
+	pat = Pattern.compile(regex);
+		
+	input = "-My98KK-myABCD--My1234567--MyZZ---My789";
+	
+	matcher = pat.matcher(input);
+
+	System.out.println("groupCount() : " + matcher.groupCount());
+	// 2개 리턴
+		
+	// 그룹들 출력해보기
+	// group(int group), start(int group), end(int group)
+	System.out.println("\t group(0): " + matcher.group(0) + " {" + matcher.start(0) + "~" + matcher.end(0) + "}");
+	System.out.println("\t group(1): " + matcher.group(1) + " {" + matcher.start(1) + "~" + matcher.end(1) + "}");
+	System.out.println("\t group(2): " + matcher.group(2) + " {" + matcher.start(2) + "~" + matcher.end(2) + "}");
+- groupCount() : 2
+- 입력문자열 : -My98KK-myABCD--My1234567--MyZZ---My789
+- My98KK {1~7}
+	 group(0): My98KK {1~7}
+	 group(1): My {1~3}
+	 group(2): 98KK {3~7}
+- My1234 {16~22}
+	 group(0): My1234 {16~22}
+	 group(1): My {16~18}
+	 group(2): 1234 {18~22}
+- MyZZ-- {27~33}
+	 group(0): MyZZ-- {27~33}
+	 group(1): My {27~29}
+	 group(2): ZZ-- {29~33}
+
+
+       ■ 도우미 함수(아래 메소드)를 사용해보자
+        System.out.println();
+        regExpTest("My....", "-My1234-");
+        regExpTest("(My)(....)", "-My1234-");
+        regExpTest("My....", input);
+        regExpTest("(My)(....)", input);
+
+■ 도우미 함수
+public static void regExpTest(String regex, String input) {
+   System.out.println("[정규표현식 매칭 테스트]-----------------");
+   System.out.println("정규표현식: " + regex);
+   System.out.println("입력문자열: " + input);
+  
+   Matcher matcher = Pattern.compile(regex).matcher(input);
+   int groupCount = matcher.groupCount();  // 그룹 개수
+  
+   int matchCount = 0;      
+   while(matcher.find()) {
+      matchCount++;
+      System.out.println("    매치" + matchCount + ": " + matcher.group() + " {" + matcher.start() + "~" + matcher.end() + "}");
+     
+      // 그룹이 있으면 group별 출력
+      if(groupCount > 0) {
+         for(int i = 0; i <= groupCount; i++) {  // i 범위 주목!  
+            System.out.printf("\t group(%d): %s {%d~%d}\n",
+                  i, matcher.group(i), matcher.start(i), matcher.end(i));
+         }
+      }
+     
+   } // end while
+  
+   if(matchCount == 0) System.out.println("   Ⅹ매치 없슴Ⅹ");
+  
+   System.out.println();
+} // end regExpTest()
+
+
+
+
+
+
+■■ 정규표현식 문법(구문) ■■ 
+RegExp03
+
+
+		//─────────────────────────────────────────
+		title = "^ : 바로 문자뒤의 문자열로 시작됨";
+		regex = "^The"; // The로 시작하는 문자열 패턴 내놔
+		arrInput = new String[] {
+				"The Things",//ㅇ
+				"On The Things",//ㄴ
+				" The The The",//ㄴ
+				"There you go"//ㅇ
+		};
+		
+		//─────────────────────────────────────────
+		title = "$ : 문자열의 마지막이 이 문자열로 마무리 됨";
+		regex = "Man$"; // Man으로 끝나는 문자열 패턴 내놩
+		arrInput = new String[] {
+				"SuperMan",//ㅇ
+				"AquaMan",//ㅇ
+				"WonderWoman",//ㄴ
+				"WonderWoMan",//ㅇ
+				"PostMan ",//ㄴ
+		};
+
+		title = "^표현식$ : 정확하게 전체패턴매칭되는 문자열";
+		regex = "^SuperMan$";
+		arrInput = new String[] {
+				"SuperMan",//ㅇ
+				"Super Man",//ㄴ
+				" SuperMan",//ㄴ
+				"SuperMan ",//ㄴ
+
+		title = " . : 어떤 문자든지 임의의 '한문자'를 말한다.꼭 하나의 문자와 매칭";
+		regex = "x.z"; 
+		arrInput = new String[] {
+				"xyz",//xyz
+				"xxzdfdk",//xxz
+				"aa10x9zbxbz",//x9z, xbz
+				"xz",//ㄴ
+				"90x zxx_zdf",// x z, x_z
+				"xbz",//xbz
+				"xyyz",//ㄴ
+
+		title = " * : 바로 앞의 문자가 없거나 한개 이상의 경우를 매칭";
+		regex = "ab*"; //a는 무조건 있어야 하고, b는 없어도 되고 여러개 있어도 됨
+		arrInput = new String[] {
+				"a",  // 1
+				"abc", // 2 ab
+				"ab", // 3 ab
+				"abbbaaaabababbab", // 4 abbb a a a ab ab abb ab 이렇게 8개
+				"bbba",  // 5 a
+				"cdef"  // 6 ㄴ
+		
+		title = " + : 바로 앞의 문자를 나타내면 꼭 한개 혹은 그 이상을 매칭";
+		regex = "ab+"; // a 무조건, b도 꼭 하나 or 여럿
+		arrInput = new String[] {
+				"a",  // 1 ㄴ
+				"abc", // 2 ab
+				"ab", // 3 ab
+				"abbbaaaabababbab", // 4 abbb ab ab abb ab 5개
+				"bbba",  // 5 ㄴ
+				"cdef"  // 6 ㄴ
+		
+		title = " ? : 바로 앞의 문자가 한개 있거나 없는것을 매칭";
+		regex = "ab?"; // a, ab = a 무조건, b는 없어도 되고 있으면 하나 매칭
+		arrInput = new String[] {
+				"a",  // 1 a
+				"abc",  // 2 ab
+ 				"kkabcc",  // 3 ab
+				"abbbaaaabababbab", // 4 ab a a a ab ab ab ab 8개
+				"bbba"  // 5 a
+		
+		title = " [] : 안에 존재하는 문자들중 한 문자만을 매칭";
+		regex = "[abc]"; // a or b or c 중 한 문자에 매칭
+		arrInput = new String[] {
+				"able", // 1 a b  // ab // able 전체 매칭
+				"bible",  // 2 b b // b, b //bible전체 매칭
+				"cable",  // 3 c a b // cab // cable 전체 매칭
+				"xenosys", // 4 ㄴ // ㄴ // xenosys 전체 매칭
+		};
+
+//		regex = "[abc]+"; // a/b/c 뒤에 []안의 것 한개 이상 매칭됨. 사실상 [abc][abc]
+//		regex = "[a-z]+"; // a부터 z까지 소문자 한 문자 이상 매칭되면 전체 다.
+//		regex = "[a-zA-Z]+"; // a~z, A~Z 대소문자 붙여서 한 문자 이상 매칭되면 전체 다.
+//		regex = "[^a-zA-Z]+"; // []안에서의 ^는 NOT을 의미.
+							  // a~z, A~Z를 뺀 모든것에 매칭	
+//		regex = "[a-zA-Z0-9]+"; 
+//		regex = "[a-zA-Z0-9-]+"; //하이픈(-)까지 포함시켜줌
+		regex = "[0-9]+";
+		
+		arrInput = new String[] {
+				"abc100", // abc // abc // 100 // abc100 // 100
+				"abcDefGHIUJ-KLM123opQrstuz" // abc ef op rstuz //abcDefGHIUJ KLM opQrstuz
+							    // - 123 //abc~J  KLM~uz // 전체 매칭 //123
+		
+
+
+
+
+		title = " {} : 앞에 있는 문자나 문자열의 등장개수를 정함";
+		regex = "ab{2}"; // a로 시작하고 b가 2번 등장하는 패턴 찾아라
+		arrInput = new String[] {
+				"abb", //abb
+				"abbb", //abb
+				"abbbabbbbbbbbabaabab", //2개
+		};
+		regex = "ab{2,}"; // b의 개수가 2개 이상에 매칭 = abbb abbbbbbbb
+		regex = "ab{3,5}"; // b가 3에서 5개까지 매칭 = abbb abbbbb
+
+
+
+
+
+		title = " | : OR 연산자  역할";
+		regex = "a|b"; // a 또는 b 중 하나 매칭
+		arrInput = new String[] {
+								"a",// a // a
+				"b", // b // b
+				"ab", // a b // ab
+				"xyz" // ㄴ
+		};
+
+		regex = "(a|b)+"; // a나 b가 한개 이상인 것 매칭
+
+
+		★title = "(?i)  : 대소문자 구분안하고 매칭 ";  
+		★★★ 타 언어 정규표현식과 다름 ★★★
+		regex = "(?i)abc"; // 
+		arrInput = new String[] {
+				"abc", //전체 매칭
+				"Abc", //전체 매칭
+				"ABC", //전체 매칭
+
+
+		title = "\\s : 공백,  \\S : 공백아닌 문자";
+		// 공백 : 띄어쓰기, \n, \t, \r ...
+		regex = "\\s"; //
+		arrInput = new String[] {
+				"Hello My World",//2개
+				"He \tllo My World",//3개
+				"\n\t Hello My World\n\n", //4개
+		};
+		regex = "\\S+";//	
+
+
+
+
+		title = "\\w : 알파벳이나 숫자, \\W 알파벳이나 숫자를 제외한 문자";
+		regex = "\\w+"; 
+		arrInput = new String[] {
+				"This is 2024-09-23 !!", //5개 매칭
+		};
+		regex = "\\W+"; // 공백,공백, -, -, 공백!! 5개
+
+
+		title = "\\d : [0-9] 숫자, \\D 숫자를 제외한 모든 문자";
+		regex = "\\d+"; 
+		arrInput = new String[] {
+				"This is 2024-09-23 !!", // 3개
+		};
+		regex = "\\D+";// This is ,-,-, !! 4개
+
+
+
+		title = "escaped character 매칭 시키기";
+//		regex = ".+"; //.의 의미대로 전체가 다 매칭되어버림ㅜㅜ
+		regex = "[.]+"; //브래킷에 담으면 그 기호 사용 가능
+		regex = "\\.+"; //역슬래시 써도 같은 기능함
+		arrInput = new String[] {
+				"My name is .."// ..
+		};
+
+
+
+
+==============================================================================
+
+■■■    클래스 정의 및 사용     ■■■
+
+■인스턴스
+	- new를 통해 만들어진 것들
+
+■우리가 만든 클래스를 사용하려면,
+ * 	그 클래스의 '인스턴스(실체 instance)'를 생성해야 함.
+ *
+ * 	구문
+ * 		클래스이름 변수이름 = new 생성자();
+ * 		생성자(): 클래스의 이름과 동일, 클래스의 멤버변수들을 초기화
+ *
+ *  new 로 생성하는 instance 들은
+ *  	지역변수와는 달리 인스턴스가 생성될 때 (자동으로) 초기화가 된다.
+ *  	특별히 초기화를 할 값들이 지정되어 있지 않을 때는
+ *  	각 변수 타입의 기본값(디폴트 값)으로 초기화가 됨
+ *  		boolean -> false, 숫자타입(int, double, ...) -> 0
+ *  		String, 참조 타입(클래스) -> null
+ *
+ *  지역변수: 메소드 안에서 선언된 변수
+ *  	지역변수는 사용하기 전에 반드시 초기화를 해줘야 함.
+
+
+
+■  클래스:
+*   우리가 만들고자 하는 대상의 '상태' 와 '기능' 을 함께 가지고 있는 '데이터 타입'
+*   상태(속성, 필드) -> 클래스의 멤버변수로 정의
+*       field, attribute, member variable 라고 함
+*   기능(동작) -> 클래스의 멤버메소드로 정의
+*       behavior, member method 라고 함
+*
+*
+*   일반적으로
+*    멤버변수(필드)는 private 으로 설정. → 자기 클래스 내에서만 사용 가능
+*    멤버메소드는 public 으로 설정. → 다른 클래스 에서도 사용 가능
+*/
+
+
+■ 생성자 : Constructor)
+// 생성자의 목적: 인스턴스 생성시 >>>멤버변수들의 초기화<<<
+★★★★ 생성자의 이름은 반드시 클래스의 이름과 동일하게! ★★★
+// 생성자는 리턴 타입이 없다.
+// 생성자도 매개변수(argument)를 가질 수 있습니다.
+// 생성자도 오버로딩(overload) 가능
+
+
+// 클래스를 만들 때, 생성자를 따로 만들지 않으면
+// '디폴트 생성자(default constructor)'를 자동으로 만들어줌.
+// 디폴트 생성자란 : 매개변수가 없는 생성자.  모든 멤버변수는 기본값으로 초기화
+// ★★(주의) 클래스에서 하나 이상의 생성자를 만들게 되면,
+// 자동으로 디폴트 생성자를 만들어 주지 않습니다.
+// ★★★(강력권장) 그러니 아무일도 안하더라도 디폴트 생성자는 반드시 만들어 주자.
+
+
+■  this();//생성자 위임.(constructor delegation
+        // this 키워드를 사용하여, 특정생성자를 먼저 호출하여 초기화 함.
+        // 생성자 위임은 생성자 내의 '첫 문장' 이어야 한다!
+
+■ 클래스 안에서 this : 
+	객체 내에서 자기자신(인스턴스)을 가리킴
+
+■ 메소드 체이닝 (method chaining)
+ 	자기자신을 리턴하여, 연이어 메소드
+ 	호출 가능케 하는 메소드 설계
+ 	보통 setter 와 이와 같은 동작을 수행하는 메소드들에 적용하면 좋다
+
+
+
+==============================================================================
+
+■■■■   getter setter    ■■■■
+
+*  캡슐화, 은닉, 추상화
+ *
+ *  클래스 안에 필요한 '속성' 과 '행동' 을 멤버로 묶고
+ *  외부에서의 '직접적인 접근을 제한'하여
+ *  객체의 데이터 와 메소드를 은닉(hiding)하고,
+ *  사용자에게는 필요한 기능만 제공하여 추상화(abstraction) 하는
+ *  객체지향 기술을 '캡슐화(encapsulation)' 라고 한다
+ *
+ *  접근을 제어하기 위해 Access modifier 를 사용 (다음 단원에 자세히..)
+ *
+ * (프라이빗된) 클래스의 멤버변수를 접근하기 위한 기능을 제공하는 메소드를
+ *  getter , setter 라 한다
+ */
+
+    // 메소드
+■■ getter: 멤버 변수의 값을 리턴해 주는 메소드
+■■ setter: 멤버 변수의 값을 변경해 줄 수 있는 메소드
+
+■■ getter & setter 작명 룰
+// age => getAge
+//       => setAge
+
+
+// realNumber => getRealNumber
+//                => setRealNumber
+
+
+// bool 타입의 경우
+//  activated => isActivated
+//                   setActivated
+
+
+
+
+
+
+/**
+ *  ● Java Bean (자바빈) 이란
+ *  	Java Beans (자바 빈즈) 규약에 따라 작성된 자바 클래스
+ *	자바빈 클래스 외부에서 필드에 접근할 경우 받드시 규약대로 정의된 getter, setter 메소드를 통해 접근해야 한다.
+ *	바로 이렇게 제공되는 getter, setter 를 프로퍼티 (property)라 한다. ★★
+ *
+ *  ● 프로퍼티 (Property, 속성)
+ *     getter, setter 네이밍 규약
+ *	- 프로퍼티 값을 '읽는' 메소드는 get으로 시작한다.  (읽기 속성)
+ * 	- 프로퍼티 값을 '변경'하는 메소드는 set으로 시작한다.  (쓰기 속성)
+ * 	- get과 set 뒤에는 프로퍼티의 이름 첫 글자를 대문자로 바꾼다.
+ * 	- set 메소드는 1개의 파라미터를 갖는다.
+ *
+ *    ★ property 는 필드 가 아니다!   property 는 getter, setter 를 말한다.
+ *    ★ property 는 반드시 '필드'값에 대해 읽고 쓰는 것만이 아니라, 객체의 속성을 표현하는 값을 다루는 것이면 무엇이든 가능
+ */
+
+
+■■ Lombok 라이브러리
+ *  '개발과정'에서 발생하는  잦은 클래스 설계 변경등에 대해 자동적으로
+ *  생성자, getter, setter, toString(), builder 제공해줌
+ *
+ *    https://projectlombok.org/
+ *
+ * 	Java 개발자의 필수 사용 라이브러리!
+ *
+ * 	Lombok 라이브러리는 'runtime' 에 동작하는 라이브러리가 아니라
+ * 	'compile time' 에 동작하는 라이브러리다.
+ */
+
+/**
+ *
+■■   Settings 에서 Enable annotation processing 활성화  체크
+ *  - Plugin 에 IntelliJ Lombok plugin 설치 여부 체크
+ *
+ * IntelliJ 에서 외부 라이브러리 (*.jar) 추가
+ *   1. 라이브러리 다운로드 : https://projectlombok.org/
+ *   2. 프로젝트/모듈에 폴더 만들기 (ex: /lib)
+ *   3. Project Structure 에서 해당 프로젝트/모듈 의 dependencies 에 Add
+ *
+ * Lombok 이 잘 동작하는지 여부
+ *   class 내용을 작성할때
+ *   Structure 창(ALT+7)을 열고 적용되는 내용을 확인해볼수 있다.
+
+/**
+
+■■ Lombok 의 주요 어노테이션 (annotation 들)
+*     https://projectlombok.org/features/
+*
+* @Getter → getter 생성
+* @Setter → setter 생성
+* @ToString → toString() 생성
+* @ToString.Exclude  → toString() 에서 제외
+* @Data → getter, setter, toString, equals, hashCode 생성 ★
+* @NoArgsConstructor  → 기본생성자 ★
+* @AllArgsConstructor  → 모든 필드에 대한 매개변수 갖는 생성자
+* @RequiredArgsConstructor → @NonNull 이 붙은 필드의 생성자
+* @Builder   →   builder pattern 제공
+* @Builder.Default   → 빌드 과정에서 생략되면 기본값 (0/null/false)로 초기화
+*
+* @NonNull → 필드나 변수선언시 앞에 사용.  Null 이 되면 예외를 발생시켜준다.
+*/
+
+
+
+
+
+
+■■ ★
+
+
+==============================================================================
+
+
+★ ★ ★ ★ ★ ★★ ★ ★ ★ ★조오오온나 중요 ★ ★ ★ ★ ★ ★ ★ ★  ★ ★ ★
+
+■■   Modifier   ■■
+
+■ Modifier (제어자, 수식어, 제한자..)
+ *  클래스나  변수, 메소드의 선언부에 붙여주어 부가적인 제어를 하게끔 함
+ *
+■  Access modifier (접근제한자)
+ *        private, protected, public.
+ *
+■  그밖의 modifier 들
+ *        final, static, abstract, transient, synchronized, volatile
+
+
+
+■ 접근권한 수식어(Access Modifier)  접근제한자
+ ★★★★1) 종류 : private< (default)< protected< public 순서대로 암기★
+★★★★★★★ 사용 권한이 점점 커짐 ★★★★★★★
+ *  2) 기능 :★★ 멤버 변수, 멤버메소드에 대한 접근 권한★★을 제한
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+ *  3) private: '자기자신'이 선언된 클래스에서만 사용 가능
+ *  4) (default): '자기자신' + '같은 패키지'에 있는 클래스들에서는사용 가능
+ *  5) protected: '자기자신' + '같은 패키지' + '상속받은 클래스' 에서 사용 가능
+ *          다른 패키지의 클래스라도 '상속 받으면' 사용 가능하다
+ *  6) public: 어디서든 사용이 가능
+ *★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+ *  사용범위: private < (default) < protected < public
+ *
+ ★★★ 클래스에 붙는 접근제한자는 딱 두가지 입니다
+ *  (default) , public
+
+// 1. public class: 어디에서나 인스턴스 생성이 가능한 클래스
+ ★★★(주의) public 클래스의 이름은 .java 파일 이름과 반드시 같아야 함
+ ★★★ 하나의 클래스 안에 '퍼블릭 클래스'는 하나만 만들 수 있음
+// 2. (default) class: 같은 패키지에 있는 클래스들에서만 인스턴스 생성이 가능
+// 아무런 수식어가 없는 경우 디폴트 클래스의 이름은 
+    .java 파일의 이름과 같아야 될 필요는 없다.
+
+
+
+// (주의) final 멤버 변수(=필드에서)는
+// !!!!!반드시 선언과 동시에 초기화!!!! (혹은 생성자에서 초기화) 해야 한다
+//	final int NUM2; // 초기화 되지 않은 final 필드는 에러!!
+// 		// 한 번 초기화한 뒤로는 영원히 변경할 수 없음
+// 안에서 final 상수는 최초 초기화는 언제든 가능. 마지막에 해도 됨.
+
+
+
+
+■■ ■■ ■■ ■■  클래스에 선언된 멤버 변수/멤버 메소드는
+■■ ■■ ■■ ■■  static 여부에 따라 아래와 같이 불려진다
+
+■■ 인스턴스 변수: 
+//   static 이 안붙은 변수
+//   인스턴스를 생성한 다음에(new 생성자(); 호출된 다음에)
+//   사용할 수 있는 변수
+
+t2.sNum = 340; //문법적으로 가능은 하나, 바람직한 static 사용방법 아님!!!!!
+// 나중에 다른 패키지에 있을 이 7이랑 같아지면 어떻게 하게
+//인스턴스 변수는 반드시 com.lec.~하기~!!!!!!
+
+■■ 인스턴스 메소드:
+//   static 이 안 붙은 메소드
+//   인스턴스를 생성한 다음에(new 생성자(); 호출된 다음에)
+//   사용할 수 있는 메소드
+
+■■ 클래스 변수(static 변수) ■■
+//   클래스의 멤버 변수들 중에서,
+//   인스턴스를 생성하지 않아도 사용할 수 있는 변수
+// 클래스 메소드(static 메소드):
+//   인스턴스를 생성하지 않아도 사용할 수 있는 메소드
+
+
+ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+		아래 클래스 특징 이해하고 암기
+ ★ ★ ★ ★ ★ ★  ★ ★ ★ ★ ★ ★★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+■■■■ 클래스 변수 / 메소드 특징 (static) ■■■■
+
+1. JVM 메모리의 '메소드 영역(Method Area..M.A.)'에 
+클래스가 로드 될때(프로그램 시작될때)
+ ★ ★ ★ '한번만' 생긴다  ★ ★ ★
+
+2. 인스턴스가 생성되지 않아도 사용할 수 있다.
+ ★ ★ ★ 클래스이름.static변수 ★ ★ ★클래스이름.static메소드()★★★!!!<-- 요렇게 사용한다
+
+   - 따라서, 인스턴스를 나타내는 ★★this 와 super 는 + 메소드에서 사용불가 ★ ★
+3. 모든 인스턴스는 하나의 static 변수/메소드를★ '공유'★한다.
+   - 모두가 하나를 공유.
+
+ - 인스턴스 변수/메소드는 이탤릭체X   
+ - 스태틱은 삐딱한 이탤릭체O!!!!!!!!!!!!!
+
+JVM 저장 메모리 종류및개념 꼭 외워!!!
+
+
+t2.sNum = 340; //가능은 하나, 바람직한 static 사용방법 아 님!!!!!
+//인스턴스 변수는 반드시 com.lec.~하기~!!!!!!
+
+
+
+
+■■■■     Singleton 디자인    ■■■■
+
+- 인스턴스가 최대 1개까지만 생성되어야 하는 디자인 패턴
+  계속 하나의 인스턴스가 돌고 돌고 돌고 돌아서 호출됨
+ = 변수 바꿔도 모두가 똑같아짐
+(어제 얘기 나온 builder pattern 도 디자인패턴 중 1가지..)
+
+
+==============================================================================
+
+■■■■     상속  Inheritance    ■■■■
+
+    ■ 상위클래스를 상속받아서 하위클래스를 정의하는 방법
+ *    class 하위클래스 extends 상위클래스
+ *
+ *  ■ 자바 에선 오로지 '하나의 부모'로부터 상속받을수 있습니다 
+        (단일 상속)  다중 상속 허용하지 않음
+ *
+ *  ■ 용어
+ *  Super Class(상위 클래스), Parent Class(부모/조상 클래스), Base Class(기반 클래스)
+ *  Sub Class(하위 클래스),    Child Class(자식 클래스), 	  Derived Class(유도 클래스)
+ *  	※ 상속받는다..(동사) inherit , subclass
+ *
+ *  ■ sub class에서는 super class가 가지고 있는 멤버 변수들은  선언하지 않아도 사용할 수 있다.
+ *  super class에 없는 멤버 변수만 선언해 주면 됨
+ *
+ *  ■ 상속의 이점 :
+ *   상속을 통하여 기존의 객체를 그대로 '재활용'하면서, 새로운 객체에서
+ *   '추가', '변경'되는 부분만 작성함으로 소프트웨어 개발 효율을 높일수 있다.
+     (코드의 재활용 -> 생산성 UP!)
+ *
+ *  ■ static 은 상속되는 대상이 아니다.
+ *    -> 인스턴스 여부와 관계없이 처음부터 메모리에 로딩되어 있는 존재이니까.
+===> 스태틱은 super.(~) 못 씀
+
+// ※ IntelliJ: 클래스에서 CTRL + H => Hierarchy 창 뜬다.
+
+
+
+■■■■  java.lang.Object
+ *  자바의 모든 클래스는 java.lang.Object로부터 상속 받는다.
+ *  java.lang.Object 클래스는 모든 클래스의 부모클래스이다.
+    = 최상위 조상
+ *  Object 클래스에 있는 메소드를 다른 클래스에서도 사용 가능
+ *
+https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
+ 
+
+       System.out.println(p2);
+        //그냥 p2만 적었을 뿐인데,  
+        System.out.println(p2.toString());
+        // ↑ toString() 은 자바 내 조상인 Object 클래스의 메소드
+        // 내부적으로 toString() 결과를 출력하였더라..
+
+
+ 상속받은 객체를 생성할때는 ★★반.드.시. 부모객체부터 생성★★된다!!
+ *
+■ 상속에서 생성자 호출순서
+ *   1. 자식 클래스의 생성자에서 명시적으로 부모 클래스의 생성자가
+ *      호출되지 않으면, 자동으로 부모 클래스의 "디폴트 생성자"가 호출됨.
+ *
+ *   2. 자식 클래스의 생성자에서 명시적으로 부모 클래스의 생성자를 호출하기도 함
+ *   	1) super(...) 키워드 사용 -> 부모 클래스의 생성자를 호출
+ *   	2)★★★★(주의) super는 항상 제일 처음에 호출★★★★되어야 함
+ *   	3) 부모 클래스에 디폴트 생성자가 없는 경우도 있을 수 있다.
+ *   그런 경우에는 다른 생성자를 "반드시 명시적으로 호출"해 줘야만 함.
+
+■■ ★
+
+
+==============================================================================
+
+■■■■■■    메소드 재정의 = 오버라이딩 Overriding   ■■■■■■
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+■■    Method Overloading (메소드 중복 정의)    ■■
+	메소드 오버로딩
+
+★★같은 이름으로 메소드를 매개변수 리스트를 달리하여 중복 정의, ★★
+	 즉, 이름이 같아도 메소드 signature 가 다르면 중복정의 가능.
+
+오버로딩과 헷갈리지 말자!!!!
+
+■■   메소드 재정의(Overriding)  ■■
+ * '상속'관계에서 '부모 클래스에 있던 메소드'를 '재정의'하는 것.
+ *  부모 클래스에 있는 메소드와 매개변수 리스트가 동일해야 함 (signature 가 동일해야 한다)
+ *
+ *  부모 클래스에 있는 메소드와 '접근권한 수식어'가 동일할 필요는 없지만,
+ * ★★ 접근권한의 범위가 축소될 수는 없다.★★
+     private < default < protected < public
+            - >>>>> 이짝으론 갈 수 있어도
+           <<<<<- 이짝으로 작아질 수는 읎다!1
+ *  즉, 접근권한은 같거나 더 넓은 수식어를 사용해야 함.
+ *
+ *  '부모측 리턴타입을 상속받은 리턴타입'으로 리턴 하는 오버라이딩 가능.
+ *  (Java5 부터 등장. covariant-return type)
+ *
+ *    ! 메소드 오버로딩(Overloading)과 혼돈하지 말자!
+ *
+ * final 메소드 : 더이상 오버라이딩 불가
+ * final 클래스 : 더이상 상속 불가
+
+■ final을 붙이면..
+지역변수 -> 상수
+필드변수 -> 
+메소드 -> 오버라이딩 불가
+클래스 -> 자식에게 상속불가
+
+// 리턴타입이 ★자손타입★으로는 오버라이딩 ★가능★
+// 리턴타입이 ★조상타입★으로는 오버라이딩 ★불가★
+
+■ IntelliJ 에서 Override 코드 작성 방법들
+    // 1. 메소드 이름 타이핑하면서 자동완성
+    // 2. CTRL + O 누르면 Override 창 뜬다.
+    // 3. ALT + INSERT, Override 실행
+
+
+        
+■ 어떤 경우에 상속으로 객체를 설계하나?
+
+*      HAS-A 관계 ===>  멤버로 설계
+*              Car, Tire
+*              Car is-a Tire  (X)
+*              Tire is-a Car (X)
+*              Car has-a Tire (OK)
+*             
+*      IS-A 관계 ===>  상속으로 설계 
+*              Vehicle is-a Car  (NO) 
+*              Car is-a Vehicle  (OK)
+*              HybridCar is-a Car (OK)
+
+
+
+==============================================================================
+
+■■■■■■     다형성  ( Polymorphism )     ■■■■■■
+ 	
+■ 다형성  ( Polymorphism )
+ 	하나의 이름의 클래스나 메소드가 
+	"'여러 가지 형태의 동작을 하는 능력'"
+ 	
+■ 클래스의 다형성:
+	한 타입의 참조변수로 여러타입의 객체를 참조 가능.
+	조상클래스 타입의 참조변수로 자손클래스의 인스턴스를 참조가능한것
+ 	
+■ 메소드의 다형성:
+ 	메소드 오버로딩, 메소드 오버라이딩
+
+
+■ 만약 선언 타입과 대입된 타입이 다르다면..?
+조상 <- 자손 대입
+= 자손의 것이 대입되었으니 자손(인스턴스 타입)으로 동작함.
+선언된 타입(조상)으로 동작하지 X
+		// 자바만 이렇게 동작..!
+		// C++은 선언된 타입(조상)으로 동작함;;
+
+Vehicle car1 = new Car(); // 조상 <- 자손 대입 (가능)
+HybridCar car7 = new Vehicle(); // 자손 <- 조상 (불가)
+
+
+
+/* 다형성의 유용성
+	다형성에 의해서, 자식타입 객체가 부모타입으로 자동 형변환 가능!
+	부모(조상)타입 만으로도 상속된 모~든 자손 타입들을 담을수 있다.
+
+// 클래스의 다형성에 의해 조상타입으로 모든 자손들 참조 가능
+// 자손타입의 모든 객체는 조상타입으로 자동형변환 가능!
+		Vehicle car1 = new Vehicle();
+		Vehicle car2 = new Car();
+		Vehicle car3 = new HybridCar();
+// car 라는 하나의 이름의 변수로 여러가지 타입의
+// 오버라이딩 된 메소드를 각각 동작시킬수 있다!
+		for(var car : cars){
+			car.displayInfo();//<- 이게 출력문임...ㄷㄷ
+}// 우왕! 한가지 타입으로 한꺼번에 처리 가능!!!
+
+// 다형성이 없었다면?  각 타입별로 변수들을 만들고 따로따로 사용해야 하는 왕불편.
+		//     Vehicle car1 = new Vehicle();
+		//     Car car2 = new Car();
+		//     HybridCar car3 = new HybridCar();
+		//     car1.displayInfo();
+		//     car2.displayInfo();
+		//     car3.displayInfo();
+
+// 다형성의 유용함은 매개변수, 혹은 리턴 타입에도 적용된다
+	// println의 매개변수로 Object의 참조변수가 넘겨지면,
+	// 내부적으로 해당 클래스의 toString() 메소드가 불리게 됨
+	System.out.println(car1); // println(Object)  <-- Java 의 모든 객체를 받을수 있다! (다형성!)
+
+// Car IS-A Vehicle
+// HybridCar IS-A Vehicle
+// HybridCar IS-A Car
+
+
+// instanceof 연산자
+// 용법: 변수/값 instanceof 클래스
+// 결과: true / false
+
+
+
+
+==============================================================================
+
+■■■■■■   업/다운캐스팅      ■■■■■■
+
+■   업캐스팅 (Upcasting)
+ *        자식 클래스의 객체가 부모 클래스 타입으로 형변환 되는 것
+ *
+■   다운캐스팅 (Downcasting)
+ *         업캐스팅의 반대
+ *         하위 클래스로의 다운캐스팅을 할때는 명시적으로 변환할 타입을 지정해주어야 한다.
+ *         이때 , 캐스팅에 실패하면 ClassCastException 발생
+
+
+
+
+
+■■■■■■       추상  Abstract    ■■■■■■■■
+
+■ 클래스: 멤버 변수 (+ 생성자) + 메소드 => 데이터 타입
+
+■ 추상 메소드(abstract method):
+   원형(prototype)만 선언돼 있고, 메소드 본체가 정의되지 않은 메소드
+   메소드 본체가 없기 때문에 {}부분이 없다.
+   메소드 원형 끝에 ;으로 끝냄.
+   메소드 이름 앞에 abstract 키워드를 반드시 써 줘야 함
+
+■ 추상 클래스(abstract class): 
+    추상 메소드를 (한 개라도) 가지고 있는 클래스
+    클래스 ★★선언할 때 abstract 키워드를 반드시★★ 써 줘야 함
+    추상 클래스는 ★인스턴스를 생성할 수 없다. (new 불가능)★ 
+
+■ 추상 클래스를 사용하는 목적은
+   추상 클래스를 상속 받는 자식 클래스에 반드시 '구현'해야 할 메소드가 있을 경우,
+   -> 그 메소드를 추상메소드로 만들어서 반드시 override하도록 하는데 목적이 있다.
+
+==============================================================================
+★ 2024.09.24// 여기 위까지 출력함
+==============================================================================
+
+
+
+■■■■■■       인터페이스(interface):       ■■■■■■■■ 
+
+■ 1. 모든 메소드가 public abstract으로 선언되고, (명시 안해도..)
+■ 2. 모든 멤버 변수(필드)가 public static final로 선언된
+   특별한 종류의 추상 클래스
+
+■ 인터페이스는 interface라고 선언
+■ 인터페이스를 구현(상속)하는 클래스에서는 ■ implements ■키워드를 사용
+인터페이스를 구현(상속)할 때는 ■★■ 개수 제한이 없다. (다중상속)■★■
+메소드 선언에서 public abstract는 생략 가능
+멤버 변수 선언에서 public static final은 생략 가능
+
+■ 모든 필드는 명시 안 해도 public static final 이다.
+■ 모든 메소드는 명시 안 해도 public abstract
+/**
+ * class 가 class 를 상속받을때 -> extends
+ * class 가 interface 를 상속(구현)할때 -> implements
+ * interface 가 interface 를 상속할때 -> extends
+ */
+
+
+
+
+
+■■   SW의 품질?  ■■ 
+고객's view - 신뢰성,  
+개발자's view - 개발용이성, 유지보수성(자바는 여기에 특화), 이식성, 등등...
+
+자바는 개발하는 데에는 개같다..^^
+
+
+
+==============================================================================
+
+■■■■■■■■    예외  (Exception)     ■■■■■■■■
+
+■ 컴파일 에러 : 문법상 오류
+
+■ 예외(Exception) : 문법상의 오류 가 아닌 '실행중' 에 발생되는 오류상황	  
+(기본적으로) 예외 가 발생되면, 예외 관련 메세지 출력하고 프로그램이 종료 됩니다. 
+
+■ 예외처리 : try~catch를 사용하는 이유
+	 1. if 문은 예외 처리 이외의 용도로 사용되기 때문에 프로그램 코드상에서 
+	    예외처리 부분을 구분하기가 쉽지 않다
+	 2. try {}  블럭은 '일반적인 흐름'을   ,catch {} 블럭을 '예외처리(handling)' 
+	    블럭으로 만듦으로 코드 분석이 훨씬 용이.
+	public static void main(String[] args) {
+		System.out.println("예외(Exception) 처리");
+
+		int num1 = 123;
+		int num2 = 0;
+		int result = 0;
+
+		// if 문을 사용한 처리
+		if (num2 != 0) {
+			result = num1 / num2;
+		} else {
+			System.out.println("0으로 나눌 수 없습니다... ");
+		} // end if
+
+		System.out.println("결과: " + result);
+
+		// 위의 코드를 try {~catch..final...} 로 만들어 처리
+
+		System.out.println("-".repeat(20));
+		try {
+		result = num1 / num2;
+		System.out.println("결과 : " + result);
+	} catch (ArithmeticException ex) {// catch{ .. } 예외 처리 블럭.
+			// 예외 발생시 수행되는 코드들.
+			// 위 try 블럭 수행중에 ArithmeticException 이 발생(throw)되면
+			// 이를 처리(handling)하는 catch 블럭
+
+			System.out.println("0으로 나누는 Exception");
+			System.out.println(ex.getMessage()); // 예외의 message
+			ex.printStackTrace();
+			// Try 의 역할 : 위의 이프문과 구별해줌
+
+■특히 시스템 자원(resource), HW (파일, DB..), 네트워크 등을 사용하는 프로그래밍에선
+'예외' 가 언제든지 발생할수 있으므로 try ~ catch 가 필수적이다.
+		 
+		try {
+			// 1. DB connect
+			// 2. DB 테이블 접속/쿼리
+			// 3. SQL 문장 실행
+			// 4. 결과 출력
+		} catch (Exception e) {
+			// Exception 처리
+		}
+		
+		if (DB connect 성공) {
+			if (DB table 쿼리 성공) {
+				if (SQL 문장 실행) {
+					System.out.println("결과"));
+				} else {
+					// SQL 문장 실패 처리
+				}
+			} else {
+				// DB 테이블 쿼리 실패 처리
+			}
+		} else {
+			// DB connect 실패 처리
+		}
+	 */
+	
+
+ ★★주의! : try 블럭 안에서 선언된 변수는 
+	try 블럭안에서만 사용되는 지역변수가 된다.
+//     catch 블럭등 다른 블럭에서도 사용 가능하게 하려면
+	try 바깥에서 선언해야 한다.
+
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+ 	예외 클래스의 상속 관계 (★필수 암기★)
+
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+	java.lang.Object
+	|__ java.lang.Throwable
+	  |
+	  |__ java.lang.Exception  : 복구 가능
+	  |    |
+	  |    |__ java.lang.RuntimeException
+	  |    |    |__ ArithmeticException, NullPointerException, ...
+		런타임 애들은 굳이 매번 예외처리할 필요 없음
+	  |    |
+	  |    |__ IOException, ParseException ...
+	  |
+	  |__ java.lang.Error    : 복구 불가
+	         ...   OutOfMemoryError, StackOverFlowError ...  
+	
+
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+getMessage(), printStackTrace() 등의 메소드는 Throwable 클래스에 정의
+ 자식 클래스들은 Throwable에 정의된 메소드들을 사용할 수 있음
+	 
+catch문은 여러개를 사용할 수는 있지만, 
+ 상위 예외 클래스를 하위 예외 클래스보다 먼저 사용할 수는 없다. (컴파일 에러)
+	
+ ※ IntelliJ 단축키 : CTRL + H , class hierarchy (계층도) 보기
+
+
+multi-catch
+  Java 7부터 하나의 catch문에서 여러개의 예외를 처리할 수 있는 방법을 제공
+ 절대로 같은 상속레벨의 exception 들만 multi-catch 하기.
+
+
+
+
+★★★ finally ★★★
+ * 예외(exception) 발생 여부와 상관없이 항상 실행되어야 할 코드블럭
+ *   즉, finally 블록 안에 있는 코드들은 ★★★'항상+반드시'★★★ 실행이 됨.
+ *     예외가 발생하지 않을 때에는 try 블록 안의 코드들이
+ *     모두 실행된 후에 finally 블록의 코드들이 실행
+ *     예외가 발생할 때는, 해당 catch 블록의 코드들이
+ *     실행된 후에 finally 블록의 코드들이 실행
+ *
+ *     심지어
+ *     try 블록이나 catch 블록 안에 return이 있더라도,
+ *     finally 블록 안의 코드들이 다 실행된 이후에
+ *     return이 실행되게 됨. 
+       리턴이 실행되면 그 뒤 코드는 실행X. 그대로 끝.
+ *
+ *  ★★★  (주의) ★★★
+ *    try블럭, catch블럭, finally 블럭등에서 두루두루
+ *    사용할 변수는 try블럭 전에 선언하고, 초기화 까지 하자.
+ *
+ *   보통은 자원반납과 같은 것들을 할때 finally 활용
+ *    자원 : 키보드, 파일, 데이터베이스, 네트워크 ...
+ */
+
+// 나머지 처리 안된 예외들을 일괄 처리할때 Exception 으로 catch 한다
+        // but.. Exception은 상위(조상) 객체이므로 맨위에 쓰면 다른거 에러남
+       // Java 7부터 하나의 catch문에서 여러개의 예외를 처리할 수 있는 방법을 제공
+        // 절대로 같은 상속레벨의 exception 들만 multi-catch 하기.
+
+
+■■ throws ■■
+	메소드 설계를 할 때 예외 처리를 직접 하지 않는 경우:
+ 	메소드 이름 뒤에 throws Exception을 추가하면,
+ 	예외가 발생한 경우에는 메소드를 호출한 곳으로 exception이 던져짐.
+ 	'Exception' 및 이를 '직접 상속받은' Exception 을 throws 하는 메소드의 경우,
+ 	이 메소를 호출하는 쪽에서 반.드.시 예외 처리 (handling) 해야 한다. 안하면 에러!
+	 (이를 'checked exception' 이라 한다)
+	반면 'RuntimeException' 및 이를 상속받은 예외를 throws 하는 메소드는
+	굳이 호출하는 쪽에서 매번 예외 처리 할 필요는 없다
+  	 (이를 'unchecked exception' 이라 한다)
+
+// 만약에 try-catch 안할거면 main 메소드가 throws Exception 을 해줘야 한다.
+// main() 메소드는 가상머신이 호출하는 메소드이다.  
+  예외상황 처리는 가상머신에게 넘어간다
+
+■■ 가상머신의 예외처리 순서 ■■
+//    1 : getMessage 호출
+//    2 : 예외상황이 발생해서 전달되는 과정 출력
+//    3 : 프로그램 종료
+
+
+// 메소드를 설계를 할 때
+// 예외 처리를 메소드 내부에서 (try ~ catch) 로 처리
+	public int divide(int x, int y) {
+		int result = 0;
+		// 초기화 안 해주면 언제든 에러가 발생할 수 있기 때문에 
+		  컴파일러가 미리 빨간줄 그어줌
+
+		try {
+			result = x / y;
+		} catch (ArithmeticException e) {
+			System.out.println(e.getMessage());
+		} // 예외처리 했으니 초기에 선언한 0으로 result 찍힘
+
+		return result;
+	}
+
+
+★★★ 메소드 설계를 할 때 예외 처리를 직접 하지 않는 경우:
+	// 메소드 이름 뒤에 throws Exception을 추가하면,
+	// 예외가 발생한 경우에는 메소드를 호출한 곳으로 exception이 던져짐.
+	// Exception 및 이를 '직접 상속받은' Exception 을 throws 하는 메소드의 경우,
+	// 이 메소드를 호출하는 쪽에서 
+★★★★★★  반.드.시 예외 처리 (handling) 해야 한다. ★★★★★★
+	      안하면 에러!
+	
+// divide2() 메소드가 throw Exception을 하고 있기 때문에
+// 메소드를 호출하는 곳에서 예외 처리를 해 주지 않으면 컴파일 에러!
+// 반드시 메소드 호출하는 곳에서 예외 처리를 해 주어야 함.
+// 이러한 예외를 ★★'checked exception'★★ 이라 한다
+
+
+■■■■■■  반면 'RuntimeException' 및 이를 상속받은 예외를 throws 하는 메소드는
+	      굳이 호출하는 쪽에서 매번 예외 처리 할 필요는 없다
+
+■■
+
+■ 
+★
+
+==============================================================================
+
+■■■■■■■■     문자열   String   어겐~   ■■■■■■■■
+
+String 생성자, String literal(상수)(=immutable)
+
+// "Hello"는 literal이기 때문에, 한 번 만들어지면 재사용됨
+		// 그래서, str1과 str2는 같은 곳(주소)에 있는 문자열 "Hello"를 가리키게 됨
+		// 즉, str1과 str2에는 같은 값이 저장되게 됨
+
+
+string literal(immutable=변경 불가) 은 String constant pool로 java heap에 고정값으로 저장(존재)함
+= String Constant Heap?
+얘네는 이뮤터블이라 절대 변경이 불가함. 같은 애들은 중복으로 사용하지만
+new를 하는 순간 새로운 인스턴스가 생성되어 다른 존재로 바뀜....
+===>> 절대로 스트링, 리터럴을 "=="로 비교하지 말어라!!!
+
+
+
+■■■■■■■■  StringBuffer, StringBuilder ■■■■■■■■ 
+
+ String 클래스는 immutable 클래스이고,
+ StringBuffer, StringBuilder는 mutable 클래스임
+
+
+ ■ StringBuffer:
+	Java ver 1.0부터 있던 클래스
+	쓰레드에 안전(thread-safe), 빨간불이 있어 속도가 느림
+	= 이뮤터블
+
+ ■ StringBuilder:
+	Java 5부터 생긴 클래스
+	쓰레드에 안전하지 않다(thread-unsafe), 빨간불X. 속도가 빠름.
+	= 뮤터블이 되어버림
+
+	그 외에는 StringBuffer와 StringBuilder는 같은 기능(메소드)을 갖고 있음
+		
+
+** 웹 프로그래밍 등에선 문자열을 '붙여 나가며' 완성하는 동작을 많이 함
+	실무에서는
+		String 을 concat() (혹은 + 연산)하기 보다는
+		StringBuffer 를 append() 하는 것을 더 많이 사용함  (성능 UP)
+			
+※ 그러나 학습예제에선 예제단순화를 위해 String 을 기본적으로 사용하니 참조 바랍니다
+
+
+// String 클래스는 immutable 클래스이고,
+		// StringBuffer, StringBuilder는 mutable 클래스임
+		
+		System.out.println("[String: immutable]");
+
+		String str1 = "Hello";
+		String str2 = str1; // 주소 대입
+
+		System.out.println(str1 == str2); //주소비교. true
+
+		str1 = str1.concat("Java"); 
+		// 원본 변경시키는게 아니라, 새로운 스트링 객체 생성하여 리턴
+		System.out.println("str1 = " + str1); // HelloJava
+		System.out.println("str2 = " + str2); // Hello
+		
+		System.out.println(str1 == str2); // false
+
+		
+		System.out.println();
+		System.out.println("[StringBuffer: mutable]");
+		
+		StringBuffer buff1 = new StringBuffer("Hello");
+		StringBuffer buff2 = buff1; // 주소 복사 true
+
+		System.out.println(buff1 == buff2); // 주소비교 true
+		
+		
+		buff1.append("Java");
+	★★★  append 는 새로운 객체 만들지 X, ★내부의 원본을 변화★시킴!
+		System.out.println("buff1 = " + buff1); // HelloJava
+		System.out.println("buff2 = " + buff2); // HelloJava
+		
+		System.out.println(buff1 == buff2); // 주소비교 true
+
+
+
+■ 
+★
+==============================================================================
+
+■■■■■■■■    DateTime    ■■■■■■■■
+
+■ 자바에서 날짜/시간을 다루는 객체들
+ * java.util.Date (JDK 1.0 부터..)
+ * 	├ java.sql.Date
+ * 	├ java.sql.Time
+ * 	└ java.sql.Timestamp
+ * 
+ * java.util.Calendar (JDK 1.1 부터..)
+ * java.time.* 패키지 (JDK 1.8 (Java8) 부터..)
+ * 
+ * 지금은 java.time 패키지만으로 충분하긴 하나.. 
+ * 오랜시간 Date, Calendar 를 사용하여 만들었으므로 이 또한 알긴 알아야 한다
+
+■ java.time 패키지
+ * - JAVA8 부터 도입
+ * - 날짜 + 시간을 '조작' '비교' 등을 하는 기능을 추가한 객체들
+ *  
+ *  날짜와 시간을 표현하는 클래스들
+ *  LocalDate	로컬 날짜 클래스 
+ *  LocalTime	로클 시간 클래스
+ *  LocalDateTime  로컬 날짜 및 시간클래스 (LocalDate + LocalTime)
+ *  
+ *  https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
+ *  
+ *  
+ *  ★이제 가급적 java.time 객체를 사용하자!  구 Date, Calendar 의 문제점!★
+ *  
+ *  - Date 클래스: time zone 기능 없슴.. format 기능 없슴.. calendar 기능 없슴.
+ *   특정 시점의 날짜 정보 '저장'정도 밖에 못함. 대부분 메소드는 deprecated 됨
+ *   
+ *  - Calendar 클래스 :  날짜, 시간에 대해 '조작', '비교' 하는 기능이 불충분
+ * 월 month 값 설계 오류.  Calendar.OCTOBER 가 9 --> 혼란 야기
+ *
+ * - Date, Calendar 둘다 immutable 이 아님 (mutable) 임.
+ * --> 멀티쓰레드 환경에서 언제든 문제 발생 가능.
+ *	
+ *- 결정적으로 나중에 스프링, 웹어플리케이션등 제작에서 java.time 을 사용하는 것이 훨씬 수월해진다.
+ *  LocalDate 와 LocalDateTime 이 데이터베이스에 제대로 매핑이 되지 않는 이슈도 Hibernate 5.2.10 버젼에서 해결.   (스프링부트 2.x 버젼에서는 해당버젼 사용중)
+ *   MyBatis 3.4.5 부터도 매핑 지원 내장됨. https://mybatis.org/mybatis-3/ko/configuration.html#typeAliases
+ *
+ *  - 참조 : https://d2.naver.com/helloworld/645609
+
+second 1초
+milisecond 10^-3 0.001초 
+microsecond 10^-6  0.000001초
+nano second 10^-9  0.000000001초
+
+
+// java.time.DateTimeFormatter 를 사용하여 원하는 포맷으로 출력
+				// https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
+
+
+	public static void main(String[] args) {
+		System.out.println("-- java.time --");
+
+		LocalDate date1, date2;
+		LocalTime time1, time2;
+		LocalDateTime datetime1, datetime2;
+		String myDate = "2023-04-05";
+
+		Object[] arr = {
+			"\n[LocalDate]",
+			"현재날짜: " + (date1 = LocalDate.now()),   // now() 현재 날짜  2024-09-26
+
+			// of(year, month, dayOfMonth) 주어진 날짜
+			"주어진날짜: " + LocalDate.of(1999, 4, 20),  // 1999-04-20
+
+			"\n[LocalTime]",
+			"현재시간: " + (time1 = LocalTime.now()),   // 00:13:38.993207500
+
+			// of(hour, minute, second, nanoOfSecond) 주어진 시간
+			"주어진시간: " + LocalTime.of(23, 12, 22, 1234567),  // 23:12:22.001234567
+
+			"\n[LocalDateTime]",
+			"현재날짜시간: " + (datetime1 = LocalDateTime.now()),  // 2023-09-21T14:43:15.685732500
+			"주어진날짜시간: "  + LocalDateTime.of(2024, 9, 21, 14, 12, 45, 1234567),
+
+			// LocalDateTime => String
+			"\n[LocalDateTime → String] format(),  DateTimeFormatter 사용",
+			// java.time.DateTimeFormatter 를 사용하여 원하는 포맷으로 출력
+			// https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
+			datetime1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+			datetime1.format(DateTimeFormatter.ofPattern("yyyy년 M월dd일 HH시:mm분:ss초")),
+			datetime1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd a hh:mm:ss")),
+
+			// String -> LocalDate
+			"\n[String → LocalDate ] LocalDate.parse(), DateTimeFormatter 사용",
+			// parse : 파싱한다. 문자열 데이터를 해석하여 원하는 정보 획득, 변환 등의 작업...
+			LocalDate.parse("2024-09-26", DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+//			LocalDate.parse("2024-9-26", DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+			LocalDate.parse("2024-09-2", DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+
+
+		// single digit month/day 다룰때.
+		LocalDate.parse("2024-9-26", DateTimeFormatter.ofPattern("yyyy-M-d")),
+
+		};
+
+		for (var d : arr) System.out.println(d);
+
+
+
+
+타임 스탬프 
+:	시간, 날짜 객체 다룰때
+ *   java.time.*  ↔ String ↔ Timestamp 간의 데이터 변환 작업은 빈번히 발생한다.
+ *   관련 변환 메소드들을 잘 활용하세요
+
+
+
+
+
+	LocalDateTime dateTime1 = LocalDateTime.of(2024,2,28,15, 27, 30);
+	LocalDateTime dateTime2 = LocalDateTime.now();
+	Duration duration; // java.time.Duration (경과시간 객체)
+
+	//plusXXX(), minusXXX()
+	Object[] arr = {
+            dateTime1,
+            dateTime1.plusDays(1),
+            dateTime1.plusDays(30), // 30일 뒤
+            dateTime1.plusMonths(1),// 한 달 뒤
+            dateTime1.plusYears(1), // 1년 뒤
+            dateTime1.plusMinutes(4),// 4분 뒤
+            dateTime1.plusMinutes(10000),//1만분 뒤
+            // minusXXX() 도 마찬가지...
+
+            dateTime1.plus(90, ChronoUnit.DAYS),
+
+             "[경과시간 계산]",
+             duration = Duration.between(dateTime1, dateTime2),
+             "seconds: " + duration.getSeconds() + "s",
+             "hours: " + duration.toHours() + "h",
+
+        };
+
+        for(var date : arr) System.out.println(date);
+
+
+
+
+■ 
+★
+==============================================================================
+
+■■■■■■■■    Wrapper 랩퍼    ■■■■■■■■ 
+
+■ Wrapper 클래스 ■ 
+ : 기본 자료형(primitive type)의 데이터를 감싸는 클래스
+
+ * 기본 자료형: boolean, char, byte, short, int, long, float, double
+ * Wrapper: Boolean, Character, Byte, Short, Integer, Long, Float, Double
+ *
+ * Wrapper 클래스는 String 과 마찬가지로 immutable(불변) 이다.
+ *
+ * Wrapper 는 null  값을 가질수 있다 (reference type 이니까!)
+ * 	          ↑ primitive 는 표현할 수 없는 값!
+
+
+ ■ wrapper 클래스에 값을 저장하는 방법
+	Integer i1 = 100; // reference 타입에 primitive 를 대입? ?
+	i1 = i1 + 200; // reference 가 산술연산?
+	System.out.println("i1 = " + i1);
+
+	// ★Wrapper 클래스는 마치 primitive 타입 처럼 동작한다!★
+
+
+		■ 1. wrapper 클래스의 static 메소드인 valueOf() 메소드를 사용
+		Integer num1 = Integer.valueOf(123); <- new 발생
+		System.out.println("num1 = " + num1);
+		Integer num2 = Integer.valueOf(123); <- 또 똑같은거 넣네? 그럼 아까 만든 놈의 주소를 넣음
+		System.out.println("num2 = " + num2);
+
+		// true!??! 레퍼런스면 주소값이라 다르다 나와야 하는데?!
+		System.out.println(num1 == num2);
+		// Wrapper 끼리의 ==, != 연산은 '주소' 비교
+		System.out.println(num1.equals(num2));
+		// Wrapper가 가지고 있는 값을 비교하려면 equals 사용하자
+
+		// valueOf() 는 Object를 cache 해둔다.  같은 literal로 생성하면 같은 Object.
+		// 메모리 절약 차원/
+		// 도움말 확인 : . 
+		// If a new Integer instance is not required, 
+		// this method should generally be used in preference to the constructor
+
+		■ 2. literal 상수로 생성
+		System.out.println();
+		Integer num5 = 123;
+		System.out.println(num2 == num5);
+		// 123 Literal(상수)를 가지고 Integer 클래스의 인스턴스를 생성
+		// Integer.valueOf(123)과 동일한 코드가 동작됨 (Auto-Boxing)
+				
+		■  3. valueOf(문자열) 가능!
+		Integer num6 = Integer.valueOf("123");
+		System.out.println(num6 == num5); // true
+		
+		
+		■ 4. 산술 연산 가능
+		num6 *= 2;//산술연자 나오는 순간 복사되어 다른 객체로 나왔기 때문에
+		System.out.println(num6);
+		System.out.println(num6 == num5); // 얘는 false로 나옴
+
+		■ 5. Wrapper 는 null  값을 가질수 있다 (당연!)  primitive 는 가질수 없는 값!
+		Integer num3 = null;
+//		System.out.println(num3 + 10); // NPE 발생. NullPointerException!!!!!
+		// num3. 어쩌구를 실행하다가 오류난 것
+
+
+■■  Java 5부터 wrapper 클래스의 auto-boxing/unboxing 기능 제공
+ * 	boxing(포장): 기본자료형의 값을 wrapper 클래스에 저장하는 것
+ * 	unboxing(개봉): wrapper 클래스에 저장된 기본자료형 값을 꺼내는 것
+ * 
+■■ Number 를 상속받음
+ *    └─ Boolean, Character, Byte, Short, Integer, Long, Float, Double
+ *    intValue(), floatValue() 등은 Number의 메소드다.
+
+		Integer num1 = 10; //Pri 가 Ref 에 담김.
+		// Integer.valueOf(10); <- auto-boxing 동작
+		Integer num2 = 20;
+		Integer num3 = num1 + num2; // 둘을 더하려면 안에 든 Pri를 끄내야함.
+		// num1.intValue() <- auto-unboxing
+		Integer num30 = Integer.valueOf(num1.intValue() + num2.intValue());
+
+
+		System.out.println(num3); //30
+		System.out.println(num30);//30
+
+
+		System.out.println("auto-boxing/auto-unboxing");
+
+		Integer num5 = 200; // auto-boxing
+		System.out.println("num5 = " + num5); // auto-unboxing
+
+		int n5 = num5; // Pri 에 Ref 대입? auto-unboxing
+		// int n5 = num5.intValue()  시행된 것
+		System.out.println("n5 = " + n5);
+
+
+		Long num300 = 300L;
+		Double num400 = 1.2345;
+		System.out.println(num1.intValue());   // 10
+		System.out.println(num1.doubleValue());// 10.0 타입 변경해서 언박싱도 가능
+
+ 
+	★★★★ 비교연산 주의!! ★★★★
+		System.out.println(num1 == num2); // unboxing X -> false
+		System.out.println(num1 == 10); // unboxing O -> true!
+
+	Wrapper 클래스는 == 와 같은 비교연산시 한쪽이 primitive type 이면 auto-unboxing 하여 비교 하나
+	비교연산자의 양쪽이 wrapper 인 경우는 주소값으로 비교한다.
+	num1 와 num2 는 각각 달리 생성된 객체이므로 다른 주소값을 가진다. 
+	wrapper 끼리의 비교를 해야 한다면 equals() 를 사용해야 한다
+
+
+■ Wrapper 클래스의 유용성
+ * 1. Object 타입이 모~든 (심지어 primitive) 타입도 받을수 있다.
+ * 2. Collection 과 같은 Generic 클래스에선
+ *     primitive 타입을 담을수 없다. 그러나 ,Wrapper 를 통해 가능하다.
+ *     
+ * 3. Wrapper 는 null 값 표현 가능
+		
+		Object[] obj = new Object[5];
+		obj[0] = new A();
+		obj[1] = new B();
+		obj[2] = new C();
+		obj[3] = new Wrapper03Main();
+		obj[4] = 123; // primitive type 도 받아낼 수 있다?!
+		// ↑ Auto-Boxing + Polymorphism(다형성)
+		//  Integer <- Integer.valueOf() <- 123
+
+//        int num = obj[4]; // 이건 unboxing 동작 불가...
+          int num = (Integer)obj[4]; // 다운캐스팅 해주면 가능
+	↑ 실제 담고 있는게 Integer 다 하더라도,
+ 	   원소타입이 Object 이기 때문에  일단 Wrapper 로 형변환 하여 
+	   auto-unboxing 이 발생하게 해야 한다
+
+		for (var e : obj) {
+			System.out.println(e);
+		}
+
+
+■■ ★
+
+
+
+
+
+==============================================================================
+
+■■■■■■■■           Generic 클래스          ■■■■■■■■
+
+클래스의 멤버변수나 혹은 메소드의 리턴'타입', 매개변수 등의 '타입'을 
+ * 지정하지 않고 generic(일반적으로)하게 정의하는 클래스
+ * 
+ * '동작' 은 같으나, '데이터 타입' 만 다른 경우 Generic 으로 설계함으로 코드 생산성 향상 
+< > 안에 타입매개변수 (type parameter) 지정
+
+
+■■■■■■■■           제네릭 클래스의 타입           ■■■■■■■■
+ * 제네릭 클래스에서 사용되는 타입은
+ * 기본 자료형(primitive type)은 사용될 수 없고,
+ * 	Object 타입의 자료형들만 올 수 있음.
+ * 	(예) int는 사용할 수 없고, Integer를 사용해야 함
+ * 	(예) double은 사용할 수 없고, Double을 사용해야 함
+ *
+ *   static 필드에는 generic 사용 불가.
+ *
+ *  관례적으로 자주 사용하는 타입파라미터 명
+ * <T>	Type
+ * <E>	Element
+ * <K>	Key
+ * <N>	Number
+ * <V>	Value
+ * <R>	Result
+
+
+
+
+
+■■■■■■■■           Generic 메소드           ■■■■■■■■
+
+ *   제네릭 메소드는 메소드의 선언부에 적은 타입 파라미터로
+ *   ★호출★할 때! 타입 파라미터가 정해진다!
+ *   
+ *  이를 사용하여 '리턴 타입' 이나 '파라미터 타입'을 정할 수 있다.
+ *
+ *   <타입파라미터..> 리턴타입 메소드명(매개변수) {...}
+ *   Ex) <T, R> R MethodName (T t)
+
+"Generic 메소드");
+		
+		test1(123); // 호출할 때 T가 결정된다!
+		//레퍼런스 타입 인티저
+		test1(123.);// Double
+		test1(123.f);// Float
+		test1("123");//String
+		System.out.println("-".repeat(20));
+		System.out.println(test2(123).getClass());
+		System.out.println(test2(123.).getClass());
+		System.out.println(test2(123.f).getClass());
+		System.out.println(test2("123").getClass());
+
+		System.out.println("*".repeat(30));
+
+		Box<String> sBox = boxing("Apple"); // Box<String> 를 리턴
+		System.out.println(sBox.data);
+
+		Box<Integer> nBox = boxing(34); // Box<Integer> 로 리턴
+		System.out.println(nBox.data);
+
+		Box<Float> fBox = boxing(3.14f); // Box<Float> 리턴
+		System.out.println(fBox.data);
+
+		var dBox = boxing(3.14f); // var가 어떤 타입일지 유추 해줌
+		// Map.Entry<K<A>, H<M>>... 나중 가면 이따구로 타입이 길어짐; 그래서 실무서 var 사용
+
+
+} // end main()
+
+	public static <T> void test1(T param) {
+		System.out.println(param + " " + param.getClass());//무슨 타입인지 출력
+	}
+
+	public static <T> T test2(T param) {
+		return param;
+	}
+	//		  	   ↓ 타입파라메타 Box<T>타입의 boxing
+	public static <T> Box<T> boxing(T param) {
+		Box<T> box = new Box<>();
+		box.setData(param);
+		return box;
+	}
+
+} // end class
+
+class Box<K>{
+	K data;
+	public void setData(K data) {this.data = data;}//setter
+
+}
+
+
+
+
+■■■■■■■■          타입 파라미터 제한          ■■■■■■■■
+
+타입파라미터 제한
+     와일드 카드 <?> // 물음표 사용하여 허용
+      upper-bounded <? extends Number>   Number 타입및 이의 하위 타입들
+      lower-bounded <? super Number>    Number 타입및 이의 상위 타입들
+      generic 사용 <? extends T>        T 타입및 이의 하위 타입들
+
+   타입 계층 관계가 존재하는 타입 시스템에는
+   Covariance(공변선)와 Contravariance(반공변성)라는 개념(+ Invariance, Bivariance)이 존재한다.
+*/
+
+
+//        test1(new A()); 우린 아까 B를 상속받는 애들 허용해줬는데, 얜 B의 부모라서 불가능해~!
+        test1(new B());
+        test1(new C());
+        test1(new D());
+
+        System.out.println();
+        test2(new Box<A>()); //여기선 <?>를 줬으므로 관계 읍쓰
+        test2(new Box<B>());
+        test2(new Box<C>());
+        test2(new Box<D>());
+
+
+        // test3, test4 가 generic method 는 아니지만, 
+        // 매개변수인 generic class  에 타입 파라미터 제한을 줄수 있다
+
+        System.out.println();
+//        test3(new Box<A>()); // error
+        test3(new Box<B>()); //제한이 extends B이므로 굳이 B를 입력할 필요 없어용~ 하고 회색처리
+        test3(new Box<C>());
+        test3(new Box<D>());
+
+        System.out.println();
+        test4(new Box<A>());
+        test4(new Box<B>()); //제한이 extends B이므로 굳이 B를 입력할 필요 없어용~ 하고 회색처리
+        test4(new Box<C>());
+//        test4(new Box<D>()); //super C로 제한해놔서 자식 불가.
+ 
+
+       ■■  공변성?
+        
+        A a = new A();
+        B b = new B();
+        a = b; // 가능. 클래스의 다형성. 자동 업캐스팅...
+        
+        // 배열의 경우는? 공변성이 있다!
+        Object[] arr1 = new Integer[10];// 공변성 (covariance)
+        // Object 의 1차원 배열 타입 arr1
+        Integer[] arr2 = (Integer[])arr1; //반공변성 (contravariance)
+        
+        Box<A> boxA = new Box<>();
+        Box<B> boxB = new Box<>();
+//        boxA = boxB; // 그러나 제네릭은 공변성 없음
+
+        ArrayList<Object> list = new ArrayList<Object>();
+//        ArrayList<Object> list = new ArrayList<Integer>(); // 제네릭이라 불가.
+
+
+
+
+
+
+
+■■ ★
+
+==============================================================================
+
+■■■■■■■■         ArrayList  어레이 리스트            ■■■■■■■■
+
+■ ArrayList<E>
+■ ※계층도 숙지 중요
+	
+	■ Collection<E>
+	     |__ List<E>
+	         |__ ArrayList<E>, LinkedList<E>
+	
+	■ List 특징(ArrayList와 LinkedList의 공통점)
+	 1. 중복 저장 허용
+	 2. 저장 순서 유지 (인덱스 존재)
+	
+	■ ArrayList : 실무에선 닥치고 얘 쓰셈^^
+	 1. 저장 용량을 늘리는 데 많은 시간 소요 - 단점
+	 2. 데이터를 삭제하는 데 많은 연산 - 단점
+	 3. 데이터 참조 매우 빠름 - 장점
+	
+	■ LinkedList : 실무에선 성능차이 크게 없음..ㅎ
+	 1. 저장 용량을 늘리는 과정이 매우 간단 - 장점
+	 2. 데이터를 삭제하는 과정이 간단 - 장점
+	 3. 데이터 참조가 불편 - 단점
+	 
+	 
+	 ※ Vector<E> <-- ArrayList 와 비슷하나... ArrayList 추천.
+	 *E = elements
+	
+	 ※ 데이터 자료구조를 다룰시 각 자료구조에서 데이터에 대한 다음 동작들이 어떻게 되는지 주목하자
+	 - C (Create) 생성
+	 - R (Read) 조회
+	 - U (Update) 수정
+	 - D (Delete) 삭제 
+
+
+
+
+■ "ArrayList<E>");
+		
+		// ArrayList 선언 - ArrayList 인스턴스 생성
+		// ArrayList 는 List 의 부모이므로 앞 Array 떼어도 가능.
+		List<Integer> list1 = new ArrayList<>();
+
+
+		// isEmpty(): 데이터가 없는지 여부 (boolean 리턴)
+		System.out.println("isEmpty(): " + list1.isEmpty()); //true
+
+		// 데이터 추가(저장): add(element) 메소드 사용
+		//               add(index, element) -> index 번째 삽입
+		list1.add(100); //<- 배열 0번째
+		list1.add(400); //<- 배열 1
+		list1.add(500); //<- 배열 2
+		list1.add(200); //<- 배열 3
+		list1.add(2, 700);
+		// ^ 원래대로면 배열 맨뒤에 들어가나.. 중간에 넣고싶어서 인덱스 지정
+		list1.add(2, 200);
+		// ^ 중복저장 가능. 얘가 2로 가고 원래 2번자리의 놈들은 뒤로 밀려남.
+
+		// 데이터 참조(읽기, 검색): get(index) 메소드 사용
+		// size(): ArrayList의 크기를 반환(리턴)
+		System.out.println("size(): " + list1.size()); // 4개 담겨있다
+		System.out.println("isEmpty(): " + list1.isEmpty()); //false
+
+		for (int i = 0; i < list1.size(); i++) {//4개 안에 담긴게 뭔지 보여줘
+			System.out.println(list1.get(i));
+			//리턴타입 인티져. 리스트는 인티져로 선언했으니..
+		}
+//		System.out.println(list1.get(100));// indexOutOfBoundsExc. 100번째 없잔아;
+		// 빨간줄 안 긋는 이유? 인덱스 예외는 족보에서 Checked 가 아니라 RuntimeException 계보라서!
+		// 런타임은 미리 빨간줄 안 그어짐..(이유는 어제꺼 가서 복습해라)
+		// -> 필드에 Checked Throw 가 선언된 곳에서는 Handling 안 해주면 빨간줄 그어줌.
+
+		// 데이터 삭제: remove(index) 메소드 사용. 삭제된 element 리턴함
+		list1.remove(2);
+		System.out.println("삭제 후");
+		for (int i = 0; i < list1.size(); i++) {//안에 담긴게 뭔지 보여줘
+			System.out.println(list1.get(i));
+		}
+		
+		// 데이터 수정: set(index, element) 메소드 사용
+		list1.set(2, 333);
+		//2번째 데이터를 333으로 바꿀게
+		System.out.println("수정 후");
+		for (int i = 0; i < list1.size(); i++) {//안에 담긴게 뭔지 보여줘
+			System.out.println(list1.get(i));
+		}
+
+		// 데이터 존재여부: contains(E) => true/false
+		System.out.println(list1.contains(400));//400은 안에 있으니까 true
+		System.out.println(list1.contains(600));//600은 없으니 false
+
+		
+■■ ArrayList 순환(iteration) 방법 ■■
+	// iteration : 여러개의 데이터를 대상으로 순환
+	// 1) for
+	// 2) Enhanced-for 사용
+	// 3) Iterator(반복자) 사용
+	// 4) forEach() 사용
+
+		■ System.out.println("Enhanced for를 사용한 출력");
+		// Enhanced for 사용 가능
+		for(Integer e : list1){
+			System.out.println(e);
+		}
+		
+		■ System.out.println("Iterator 를 사용한 출력");
+		// Iterator(반복자) 사용법
+		// iterator() 메소드를 사용해서 인스턴스 생성
+		Iterator<Integer> itr = list1.iterator();
+
+		
+		■ // hasNext(): iterator가 다음 원소를 가지고 있는 지(true/false)
+		// next(): 현재 iterator 위치의 원소를 값을 리턴하고,
+		//   iterator의 위치를 다음 원소의 위치로 변경
+		while (itr.hasNext()){
+			System.out.println(itr.next());
+		}
+
+//		itr.next();
+// 순환이 다 끝난 iterator 에서 다시 next() 하면 NoSuchElementException.
+// 줄세워둔거에 뽑아낼게 더 없는데 또 내놓으라 했다? NoSuchElementExc.
+		저거 대신...
+		itr = list1.iterator();
+		while (itr.hasNext()){
+			System.out.println(itr.next());
+		}
+
+		■ System.out.println("forEach() 를 사용한 출력");
+		// forEach() + functional interface
+		// Java8 부터 등장
+		list1.forEach(System.out::println); // method reference 사용
+		System.out.println();
+		list1.forEach(a -> System.out.println(a)); // Lambda-expression 사용
+
+		
+		■ System.out.println("toString() 사용");
+		// Collection<> 대부분은 toString() 이 이미 오버라이딩 되어 있다.
+		System.out.println(list1);
+
+		■ System.out.println("\n다양한 List<> initializer");
+// 참고: https://www.baeldung.com/java-init-list-one-line
+		{
+			List<String> list;
+
+			// List <- 배열
+			// 기본적으로 어레이는 mutable 이나..
+			// immutable List 생성.
+			list = Arrays.asList(new String[]{"반숙", "완숙"});
+			System.out.println(list);
+// List <- var args
+			list = Arrays.asList("부먹", "찍먹", "막먹");
+//				<T... a>
+//				ㄴ... 은 가변매개변수. 여러 개 넣을 수 있단 뜻
+
+
+			// Stream 사용 (Java8 이상)
+			list = Stream.of("시후","최시후")
+					.collect(Collectors.toList());
+			System.out.println(list);
+
+			// Factory method (Java9 이상)
+			// ★ immutable list(unmodifiable list) 가 생성된다.
+			list = List.of("소금장", "기름장", "쌈장");
+			System.out.println(list);
+//			list.add("이런 된장"); 불가! UnsupportedOperationException. ImmutableCollections!
+
+			// Double-brace initialization
+			// 비추
+			list = new ArrayList(){{
+				add("최시");
+				add("시후");
+				add("최시후");
+			}}; // 보통은 힙메모리에서 가비지 콜렉션으로 지워버리는데..
+			// 이건 삭제 안 될 수도 있음. => 메모리 누수!!
+			System.out.println(list);}
+
+Baeldung 자바 최대? 글로벌 커뮤사이트
+
+
+
+
+■■ ★
+
+==============================================================================
+
+■■■■■■■■           Set, HashSet<E>          ■■■■■■■■
+
+/* Set, HashSet<E>
+
+	Collection<E>
+	 |__ Set<E>(중복 허용X, 인덱스X)
+	      |__ HashSet<E>(조회특화), TreeSet<E>(정렬특화)
+	
+	■ Set:
+★★★★★1. 자료의 중복 저장이 허용되지 않는다. (hashCode() 값의 중복여부!)★★★★
+	 2. 저장 순서가 유지되지 않는다.(★인덱스 없다★)
+	 (예) {1, 2, 3} = {1, 1, 2, 2, 3} : 중복 저장이 안되기 때문에 같은 Set
+	 (예) {1, 2, 3} = {1, 3, 2}: 저장 순서가 중요하지 않기 때문에 같은 Set
+	
+	■ HashSet: 매우 빠른 검색(조회) 속도를 제공
+	 	(※ HashXXX ← '검색속도 향상'을 쓰는 자료구조 입니다)
+
+"HashSet 클래스");
+
+        ■  Integer 타입을 저장할 수 있는 HashSet 인스턴스 생성
+        HashSet<Integer> hset = new HashSet<>();
+
+        ■ 데이터 저장: add()
+        hset.add(100);
+        hset.add(200);
+        hset.add(300);
+        hset.add(100); // 똑같은 값이라 중복해서 저장 X
+        hset.add(400);
+        hset.add(500);
+        hset.add(1);
+        hset.add(2);
+
+        ■ HashSet 의 크기: size()
+        System.out.println("Set의 크기 : " + hset.size());
+        // Set 은 중복 저장을 허용하지 않는다.
+
+        ■ 데이터 검색:
+        // Set 은 인덱스가 없기 때문에 get() 메소드를 제공하지 않습니다.
+        // 데이터 검색을 위해서는 Iterator 를 사용해야 함
+        System.out.println();
+        Iterator<Integer> itr = hset.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        } ★ ↑ 출력하면 저장 순서와 관계X (저장 순서 유지가 안 됨)
+
+
+        ■  데이터 삭제
+        ■  List 는 인덱스였는데 remove 는 원소
+        // remove(element): Set 에 있는 element 를 찾아서 삭제
+        //   element 있다면 삭제 후 true 를 리턴
+        //   element 없다면 false 리턴
+//		hset.remove(2);//데이터 2를 삭제하겠다
+        System.out.println("삭제결과: " + hset.remove(2));//true = 정상적으로 삭제했다.
+        // 주의! index 2 를 삭제하는게 아니다!!!!!
+        System.out.println("삭제결과: " + hset.remove(2));//false = 그런 데이터 이미 없다
+
+        System.out.println();
+        System.out.println("삭제 후:");
+        itr = hset.iterator();   // 한번 사용한 iterator 는 다시 사용 불가.  (새로이 생성해야 한다)
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+
+        ■ Set 자료형 데이터 변경을 할 수 있는 set() 메소드를 제공하지 않습니다.
+        ■ 삭제(remove) 후 추가(add)하면 변경하는 효과
+        // TODO : 500 -> 555 로 변경하고 싶다면?
+        hset.remove(500);
+        hset.add(555);
+        System.out.println("변경 후:");
+        itr = hset.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+        System.out.println(hset.contains(555));
+        System.out.println(hset.contains(700));
+
+        ■ enhanced-for 사용
+        System.out.println();
+        System.out.println("Enhanced for 사용 출력");
+        for (Integer x : hset) {
+            System.out.println(x);
+        }
+
+        ■ forEach() 메소드 사용
+        System.out.println();
+        System.out.println("forEach() 사용 출력");
+        hset.forEach(System.out::println);
+        //hset 에 있는 각각의 데이터를 println 으로 각각 보내라
+
+        ■ toString() 제공됨
+        System.out.println();
+        System.out.println(hset);
+
+        System.out.println("\n다양한 Set initializer");
+        // 참고: https://www.baeldung.com/java-initialize-hashset
+        //      https://stackoverflow.com/questions/2041778/how-to-initialize-hashset-values-by-construction
+        {
+            Set<String> set = new HashSet<>();
+
+            ■ List, 배열로부터 생성
+            set = new HashSet<>(Arrays.asList("시후", "시후", "최시후"));
+            // 뮤터블
+            System.out.println(set);//set 으로 변환해줘서 "시후"는 한 번만 나옴
+
+            ■ Collections utility 클래스 하용
+            Collections.addAll(set, "절미", "절미", "인절미");
+            System.out.println(set);//[시후, 절미, 인절미, 최시후] 또 "절미" 하나만 들어감.
+
+            ■ Stream 사용 (Java8 이상)
+            set = Stream.of("경민", "경민", "노경민")
+                    .collect(Collectors.toSet()); // 이뮤터블
+            System.out.println(set);
+            ■ 기존에 안 들어가고 [노경민, 경민]으로 인스턴스 새로 생김
+
+            ■  Factory method (Java9 이상)
+//			set = Set.of("준우","준우","박준우"); //of()는 이뮤터블이라서 중복된 값 넣으면 에러남. IllegalArgumentExc.
+            set = Set.of("박", "준", "우");
+            System.out.println(set);
+
+            ■  Double-brace initialization
+            // 비추
+//	set = TODO
+//	System.out.println(set);
+
+            ■  그밖에도 guava 라는 3rd party 라이브러리도 활용할수 있다
+            // https://guava.dev/releases/22.0/api/docs/com/google/common/collect/Sets.html#newHashSet--
+            // Sets.newHashSet("a", "b", "c")
+        }
+        ■ ■  HashSet에서 값을 찾을 때에는 이미 존재하는 요소인지 파악하기 위해서 아래와 같은 과정을 거치게 된다.
+        // 검색할 값의 hashCode() 메소드를 호출해 반환된 해시값으로 검색 범위를 결정한다.
+        // 해당 범위의 요소를 equals() 메소드로 비교한다. (Array Index에 있는 Linked List들과 값을 비교)
+        System.out.println("\n" + "*".repeat(20));
+        {
+            Person p1 = new Person(1, 20, "Mike");
+            Person p2 = new Person(1, 20, "Mike");
+            Person p3 = new Person(3, 20, "Susan");
+            Person p4 = new Person(4, 5, "Mike");
+            Person p5 = new Person(1, 20, "Kelly");
+
+            System.out.println(p1.hashCode());
+            System.out.println(p2.hashCode());
+            System.out.println(p3.hashCode());
+
+            HashSet<Person> personSet = new HashSet<>();//해쉬셋에 사람 데이터 넣기
+            personSet.add(p1);
+            personSet.add(p2);
+            personSet.add(p3);
+            personSet.add(p4);
+            personSet.add(p5);
+
+            System.out.println(personSet.size());
+            System.out.println(personSet);
+
+            HashSet<String> strSet = new HashSet<>();
+
+            String s1 = new String("이유나");
+            String s2 = new String("이유나");
+            String s3 = new String("이유나");
+
+            System.out.println(s1 == s2);//false
+            System.out.println(s2 == s3);//false 분명 주소값은 다르다 나오는데..
+
+            strSet.add(s1);
+            strSet.add(s2);
+            strSet.add(s3);
+
+            System.out.println(strSet.size());
+            System.out.println(strSet);//해쉬셋에선 왜 하나만 나오는거지?!
+
+        }
+
+        System.out.println("\n프로그램 종료");
+    } // end main()
+
+} // end class
+
+
+class Person {
+    int id;
+    int age;
+    String name;
+
+
+    public Person(int id, int age, String name) {
+        this.id = id;
+        this.age = age;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                '}';
+    }//alt+insert -> toString 하면 이뿌게 만드러줌
+
+    @Override
+    public int hashCode() { // 리턴 바꿔주지 않으면 고유 주소값 보여주도록 되어있음.
+        return id * age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.id == ((Person) obj).id; //id가 같으면 중복 정보 띄우지 마.
+
+
+
+
+■  TreeSet: 데이터가 정렬된 상태로 저장(오름차순, 내림차순)
+ 	(※ TreeXXX ← 주로 '정렬'에 특화된 자료구조)
+
+// Integer 타입을 저장할 수 있는 TreeSet 인스턴스 생성
+		TreeSet<Integer> tset = new TreeSet<Integer>();
+		
+		■  데이터 저장 : add()
+		tset.add(11);
+		tset.add(2);
+		tset.add(14);
+		tset.add(1);
+		tset.add(7);
+		tset.add(15);
+		tset.add(5);
+		tset.add(8);
+
+
+		■  데이터 검색 - Iterator 사용
+		■  TreeSet인 경우에 iterator() 메소드 오름차순 정렬
+		System.out.println("오름차순:");
+		Iterator<Integer> itr = tset.iterator();//Iterator 생성
+		while(itr.hasNext()){
+			System.out.println(itr.next());
+		}■  내가 저장한 순서대로 유지 안 됨.
+	 	 ■  다만 오름차순으로 정렬되어 저장됨.
+		
+		
+		System.out.println();
+		System.out.println("내림차순:");
+		■  내림차순 Iterator : descendingIterator() 사용
+		itr = tset.descendingIterator();
+		while(itr.hasNext()){
+			System.out.println(itr.next());
+		}
+
+■ Comparable<>이 구현 안 된 객체는 대소비교 불가!
+
+
+
+==============================================================================
+
+■■■■■■■■          Map<K, V>, HashMap<K, V>           ■■■■■■■■
+
+Map<K, V>, HashMap<K, V>
+ Collection<E>
+  |__ List<E>, Set<E>
+	
+ List<E>
+  |__ ArrayList<E>, LinkedList<E>
+	
+ Set<E>
+  |__ HashSet<E>, TreeSet<E>
+	
+ Map<K, V>
+  |__ HashMap<K, V>, TreeMap<K, V>
+	
+■ Map: key-value 저장 방식의 자료 구조
+	  1. key는 중복되지 않는 값만 허용
+	  2. value는 같더라도 key 값이 다르면 저장 가능
+	  3. 검색, 수정, 삭제를 할 때 key를 사용
+
+■ ■ ■ ■ HashMap 클래스 ■ ■ ■ ■ 
+		
+	// HashMap 인스턴스 생성
+	// Key - Integer 타입
+	// Value - String 타입
+	HashMap<Integer, String> hmap = new HashMap<>();
+
+// 데이터 저장: put(key, value) 메소드 사용
+        System.out.println("put 결과 : " + hmap.put(1, "김민혁")); // null = 정상적으로 맵에 등록되었다는 뜻
+        System.out.println("put 결과 : " + hmap.put(2, "김범순")); // null = 정상적으로 맵에 등록되었다는 뜻
+        System.out.println("put 결과 : " + hmap.put(3, "노경민")); // null = 정상적으로 맵에 등록되었다는 뜻
+        System.out.println("put 결과 : " + hmap.put(4, "박동신")); // null = 정상적으로 맵에 등록되었다는 뜻
+        System.out.println("put 결과 : " + hmap.put(1, "절미"));  // 동일 Key 에 put 하면, 콘솔에 기존 값띄우고 새 값으로 수정.
+
+        // 기존에 없던 key 값으로 put 하면 null 리턴하고
+        // 같은 키 값으로 데이터를 put 하게 되면, 기존 값이 수정(replace)되고 기존 값을 리턴함
+
+        // 저장된 데이터 개수 확인 : size()
+        System.out.println("데이터 개수 : " + hmap.size());
+        System.out.println();
+
+
+        ■ 특정 데이터 읽기
+        // get(key) 사용해서 value 읽기
+        System.out.println(hmap.get(1));
+        System.out.println(hmap.get(5));
+        // 없는 인덱스를 호출하면 원래대로라면 예외 발생해야하나...
+        // HashMap 은 예외가 아니라 null 을 리턴.
+
+        // getOrDefault(key, default)
+        // 없는 key 값에 대해 default 값 리턴
+ 
+        System.out.println(hmap.getOrDefault(1, "고릴라"));
+        System.out.println(hmap.getOrDefault(5, "고질라"));
+
+
+       ■ 데이터 삭제
+        // remove(key) : 삭제된 value 를 리턴
+        // 없는 key 삭제하면 null 리턴
+        // List remove(index)
+        // Set remove(element)
+        // Map remove(key)
+
+        System.out.println("삭제 : " + hmap.remove(2));// 삭제된 "김범순" 리턴
+        System.out.println("삭제 : " + hmap.remove(2));// null 리턴
+
+
+        ■■ 전체 데이터 읽기 ■■
+        ■ 방법1 : HashMap에서 Iterator 사용
+        // 1. HashMap의 keySet() 메소드를 사용해서
+        // 저장된 키(key)값들만 이루어진 Set을 만듬.
+        // 2. 1에서 만들어진 Set에 있는 iterator() 메소드를 사용해서
+        // Iterator를 생성
+        System.out.println();
+        Set<Integer> keySet = hmap.keySet();
+        System.out.println(keySet);// 배열된 인덱스만 확인
+        
+        Iterator<Integer> itr = keySet.iterator();
+        while (itr.hasNext()) {
+            int key = itr.next(); // key 값. 참고로 itr.next() 한 블록 안에서 여러번 호출하면 안 됨!!
+            System.out.println(key + " : " + hmap.get(key));//이게 값까지 함께 보는거
+        }
+
+        ■ 방법2 : Map.Entry 사용
+        // entrySet() 은 Set<Map.Entry<K, V>> 리턴함
+        // Entry 객체는 Key 와 Value 를 가지고 있다. -> getter 제공!
+        for(Map.Entry<Integer, String> entry : hmap.entrySet()){
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
+        ■ 방법3 : toString()
+        System.out.println(hmap);
+
+//----------------------------------------------------------------
+        ■■ HashMap 을 초기화 하는 다양한 방법들
+        System.out.println("\n다양한 Map initializer");
+        // 참고:  https://www.baeldung.com/java-initialize-hashmap
+  {
+            Map<String, String> map1;
+            Map<String, Integer> map2;
+
+            ■ Stream 사용 (Java8 이상)
+            ■ key, value 가 같은 타입이면
+			map1 = Stream.of(new String[][] {
+                  {"Hello", "World"},
+                  {"John", "Doe"},
+        }).collect(Collectors.toMap(data -> data[0], data -> data[1]));
+			System.out.println(map1);
+
+            ■ key, value 가 서로 다른 타입이라면 Object[][] 로 초기화 가능
+            // object 인 경우 형변환
+			map2 = Stream.of(new Object[][]{
+                    {"data1", 1},
+                    {"data2", 2},
+            }).collect(Collectors.toMap(data -> (String) data[0], data -> (Integer) data[1]));
+			System.out.println(map2);
+
+            ■ Java9 방식
+            ■ Map.of( .. ) <= 최대 10개까지의 key, value 쌍 지정 가능
+			map1 = Map.of();
+			System.out.println(map1);
+
+			map1 = Map.of("key1", "value1");
+			System.out.println(map1);
+
+			map1 = Map.of("k1", "v1", "k2", "v2");
+			System.out.println(map1);
+
+  private static void printFreq(int[] arr) {
+        // 발생빈도를 담을 Map<> 준비
+        // key: 등장 데이터
+        // Value : 등장 횟수.
+
+        Map<Integer, Integer> hmap = new HashMap<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            // 방법1 : get() 사용
+            {
+                Integer count = hmap.get(arr[i]); //arr[i]가 key!
+                // int 가 아니라 Integer 로 한 이유
+                // : 레퍼런스로 하여 등장한 적 없는 i가 나오면 null값 리턴해주기 위해
+
+                if (count == null) // 기존 Map 에 해당 key 가 없었다면(즉, 첫 등장이면!)
+                    hmap.put(arr[i], 1); // 등장횟수 1. (key-value 추가)
+                else //기존 Map에 해당 key 가 존재했다면 (즉, 이전에 최소 1번 이상 등장!)
+                    hmap.put(arr[i], count + 1); // 기존 등장횟수에 +1 증가. (Value 수정)
+            }
+
+            // 방법2 : getOrDefault()  사용
+            {
+                Integer count = hmap.getOrDefault(arr[i], 0);
+                hmap.put(arr[i], count + 1);
+            }
+
+        } //end for
+        for (Map.Entry<Integer, Integer> entry : hmap.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue() + "개");
+        }
+    }
+
+
+
+■■ Hash: 검색을 빠르게 하기 위한 용도
+■■ Tree: 데이터 정렬을 하기 위한 용도
+
+
+■ ■ ■ ■ ■ ■ ■  TreeMap 클래스  ■ ■ ■ ■ ■ ■ ■ 
+
+// TreeMap<Integer, String> 타입 인스턴스 생성
+		TreeMap<Integer, String> tmap = new TreeMap<>();
+
+		■  데이터 저장: put(key, value) 메소드 사용
+		tmap.put(1, "aaa");
+		tmap.put(3, "asdf");
+		tmap.put(4, "zxcv");
+		tmap.put(2, "qwerty");
+
+		■  values() : value 들로 이루어진 Collection 리턴
+		System.out.println("values()");
+		System.out.println(tmap.values());
+		//★ value 순으로 저장된 것이 아니다!
+		
+		■ 데이터 검색: get(key) 메소드를 사용
+		■  1. 키값들로만 이루어진 Set을 만듬
+		Set<Integer> kset = tmap.keySet();
+		System.out.println(kset);// key 오름차순으로 정렬되어 있다.
+		
+		■  2. keySet을 가지고 iterator를 만듬
+		Iterator<Integer> itr = kset.iterator();
+		while(itr.hasNext()){
+			int key = itr.next();
+			System.out.println(key + " : " + tmap.get(key));
+		}
+
+		System.out.println();
+		
+		■  key 의 역순 출력
+		// TreeMap에만 있는 KeySet을 만들어 내는 메소드
+		NavigableSet<Integer> navi = tmap.navigableKeySet();
+		itr = navi.descendingIterator();
+		while(itr.hasNext()){
+			int key = itr.next();
+			System.out.println(key + " : " + tmap.get(key));
+		}
+
+
+		■  HashMap --> TreeMap 전환하기
+		System.out.println("HashMap() -> TreeMap() ");
+		HashMap<String, Integer> hmap = new HashMap<>();
+		hmap.put("이순신", 50000);
+		hmap.put("강감찬", 70000);
+		hmap.put("최영", 20000);
+		System.out.println(hmap);
+
+		TreeMap<String, Integer> tmap2 = new TreeMap<>(hmap);
+		System.out.println(tmap2);
+
+		{
+			List<String> list1 = List.of("aaa", "bbb", "ccc", "bbb", "ccc");
+			System.out.println(list1);
+
+			HashSet<String> set1 = new HashSet<>(list1);
+			System.out.println(set1);//해쉬셋은 중복값 제거됨
+		}
+
+■■ ★
+
+==============================================================================
+
+■■■■■■■■                     ■■■■■■■■
+
+
+
+
+■■ ★
+
+==============================================================================
+
+■■■■■■■■                     ■■■■■■■■
+
+
+■■ ★
+
+
+
